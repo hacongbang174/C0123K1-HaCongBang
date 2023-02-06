@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form survey khách hàng</title>
+</head>
+<body>
+    <style>
+        #form {
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+            background-color: white;
+            margin: 5px;
+            padding-bottom: 10px;
+        }
+        select, option { width: 700px;}
+        table { border: 1px solid black; border-collapse: collapse; width: 700px;     
+        }
+        th { text-align: center; border: 1px solid black; background-color: antiquewhite;
+        }
+        td { border: 1px solid black; width: 100px;
+        }
+        #form:hover {
+            background-color:beige;
+        }
+    </style>
+    <div id="form">
+        <form action="" method="post">
+            <fieldset>
+                <h1>Market Research Survey</h1>
+                <p>Please take a few moments to complete this sastisfaction survey</p>
+            </fieldset>
+        </form>
+    </div>
+    <div id="form">
+        <form action="" method="post">
+            <p><strong>What is your age range?</p>
+            <select name="age" id="">
+                <option value="number">18-24</option>
+                <option value="number">25-34</option>
+                <option value="number">35-50</option>
+                <option value="number">50+</option>
+            </select>
+        </form>
+    </div>
+    <div id="form">
+        <form action="" method="post">
+            <p><strong>What is your yearly income range?</p>
+            <select name="age" id="">
+                <option value="number">$0 - $25,000</option>
+                <option value="number">$25,001 - $50,000</option>
+                <option value="number">$50,001 - $100,000</option>
+                <option value="number">$100,000+</option>
+            </select>
+        </form>
+    </div>
+    <div id="form">
+        <form action="" method="post">
+            <p>Gender Identity</p>
+            <input type="radio" name="Gender" value="male"> Male<br>
+            <input type="radio" name="Gender" value="female"> Female<br>
+            <input type="radio" name="Gender" value="nobinary"> Nobinary<br>
+            <input type="radio" name="Gender" value="male"> Other<br>
+            &emsp;&emsp;<input type="text" maxlength="250">
+        </form>
+    </div>
+    <div id="form">
+        <form action="" method="post">
+            <p>Which of the following products have your purchased in the last 2 months. Please check all that apply.</p>
+            <input type="checkbox" name="product"> Product 1 <br>
+            <input type="checkbox" name="product"> Product 2 <br>
+            <input type="checkbox" name="product"> Product 3
+        </form>
+    </div>
+    <div id="form">
+        <form action="" method="post">
+            <p>How often would you use our new product?</p>
+            <input type="radio" name="date" value="male"> Daily<br>
+            <input type="radio" name="date" value="female"> Weekly<br>
+            <input type="radio" name="date" value="nobinary"> Monthly
+        </form>
+    </div>
+    <div id="form">
+        <form action="" method="post">
+            <p>What would you pay for the new product?</p>
+            <p>$ <input type="text"name="number" value="" style="width: 50px;"> . <input type="text"name="number" value="" style="width: 20px;"><br>
+                &ensp;&nbsp;Dollas &emsp;Cent</p>
+        </form>
+    </div>
+    <div id="form">
+        <form action="" method="post">
+            <p>What features would you like to see in the new product.</p>
+            <textarea name="" id="" cols="93" rows="10"></textarea>
+        </form>
+    </div>
+    <div id="form">
+        <form action="" method="post">
+            <p>Please rate your level of agreement with the following statements.</p>
+            <table>
+                <tr>
+                    <th colspan="2"></th>
+                    <th>Strongly Disagree</th>
+                    <th>Disagree</th>
+                    <th>Agree</th>
+                    <th>Strongly Agree</th>
+                </tr>
+                <tr>
+                    <td style="text-align: left;" colspan="2">Our products are priced fairly.</td>
+                    <td style="text-align: center;"><input type="radio"><br>1</td>
+                    <td style="text-align: center;"><input type="radio"><br>2</td>
+                    <td style="text-align: center;"><input type="radio"><br>3</td>
+                    <td style="text-align: center;"><input type="radio"><br>4</td>
+                </tr>
+                <tr>
+                    <td style="text-align: left;" colspan="2">Our products are hight quality.</td>
+                    <td style="text-align: center;"><input type="radio"><br>1</td>
+                    <td style="text-align: center;"><input type="radio"><br>2</td>
+                    <td style="text-align: center;"><input type="radio"><br>3</td>
+                    <td style="text-align: center;"><input type="radio"><br>4</td>
+                </tr>
+                <tr>
+                    <td style="text-align: left;" colspan="2">Your would recommend our product to a friend or coworker.</td>
+                    <td style="text-align: center;"><input type="radio"><br>1</td>
+                    <td style="text-align: center;"><input type="radio"><br>2</td>
+                    <td style="text-align: center;"><input type="radio"><br>3</td>
+                    <td style="text-align: center;"><input type="radio"><br>4</td>
+                </tr>
+            </table>
+            <br>
+            <input type="submit" value="Submit"> 
+        </form>
+    </div>
+</body>
+</html>

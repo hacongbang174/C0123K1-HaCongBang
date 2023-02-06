@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bài tập tạo form đơn giản</title>
+</head>
+<style>
+    #form1 {
+        color: blue;
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 16px;
+        background-color: white;
+        width: 600px; height: 300px;
+        border: 40px solid aqua;
+        border-top: 20px solid aqua;
+        padding: 5px;
+    }
+    #form1h1 {
+        color: white;
+        background-color: rgba(255, 30, 0, 0.875);
+        text-align: center;
+        font-size: 32px;
+        font-weight: 100;
+    }
+    #form1p {
+        width: 150px;
+        float: left;
+        text-align: right;
+    }
+    #form1input {
+        color: orange;
+        width: 400px;
+        float: right;
+        text-align: left;
+    }
+    #form2 {
+        color: mediumblue;
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 16px;
+        background-color: rgb(246, 255, 0);
+        width: 500px; height: 432px;
+        padding: 10px;
+    }
+    #form2h1 {
+        color: blue;
+        background-color: aqua;
+        text-align: left;
+        font-size: 32px;
+        font-weight: 100;
+    }
+    #form2p {
+        width: 100px;
+        float: left;
+        text-align: left;
+    }
+    #form2input {
+        color: black;
+        width: 400px;
+        float: right;
+        text-align: left;
+    }
+</style>
+<body>
+<div id="form1">
+    <form action="http://demo.codegym.vn/6/registration_form/register.php" method="post">
+        <div id="form1h1">SỞ THÍCH CỦA BẠN</div><br>
+        <div id="form1p">
+            Họ và tên <br><br>
+            Email <br><br>
+            Sở thích <br><br>
+        </div>
+        <div id="form1input">
+            <input type="text" name="yourname" placeholder="yourname" size="30"><br><br>
+            <input type="email" name="email" placeholder="Email" size="20"><br><br>
+            <input type="checkbox" name="hobby">Thể Thao
+            <input type="checkbox" name="hobby">Âm nhạc
+            <input type="checkbox" name="hobby">Đọc sách <br><br>
+            <input type="checkbox" name="hobby">Lướt web
+            <input type="checkbox" name="hobby">Chơi game
+            <input type="checkbox" name="hobby">Điện ảnh <br><br>
+            <input type="checkbox" name="hobby">Du lịch <br><br>
+            <input type="submit" name="Submit Form" value="Gửi thông tin">
+            <input type="reset" name="Reset Form" value="Nhập lại">
+        </div>
+    </form>
+    </div>    
+    <div id="form2">
+        <form action="http://demo.codegym.vn/6/registration_form/register.php" method="post" class="font">
+            <div id="form2h1">ĐĂNG KÝ HỌC VIÊN</div><br>
+            <div id="form2p">
+                Họ và tên <br><br>
+                Ngày sinh <br><br>
+                Giới tính <br><br>
+                Địa chỉ <br><br><br><br><br><br>
+                Lớp <br><br>
+                Email <br><br>
+                Điện thoại <br><br>
+            </div>
+            <div id="form2input">
+                <input type="text" name="yourname" placeholder="yourname"><br><br>
+                <input type="text" name="ngaysinh" placeholder="Ngày sinh"><br><br>
+                <label for=""><input type="radio" name="hobby"value="Nam">Nam</label>
+                <label for=""><input type="radio" name="hobby" value="Nu">Nữ</label><br><br>
+                <textarea name="diachi" id="" cols="40" rows="5"></textarea><br><br>
+                <select name="lop">
+                    <option value="1">-Chọn lớp-</option>
+                    <option value="2">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                </select><br><br>
+                <input type="email" name="email" placeholder="Email"><br><br>
+                <input type="text" name="phone" placeholder="Số điện thoại"><br><br>
+                <input type="submit" name="Submit Form" value="Đăng ký">
+                <input type="reset" name="Reset Form" value="Nhập lại">
+            </div>
+        </form>
+    </div>
+</body>
+</html>

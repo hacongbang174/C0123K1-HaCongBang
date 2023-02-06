@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tạo form cơ bản</title>
+</head>
+<body>
+    <style>
+        .font { font-family: "Lucida Grande","Lucida Sans Unicode", Tahoma, sans-serif;
+
+        }
+    </style>
+    <form action="simpleform.html" method="post" class="font">
+        <h1>Oder Form</h1>
+            <h3>What would you like to buy?</h3>
+        <select name="" id="">
+            <option value="a">A</option>
+            <option value="b">B (+ 0.5$)</option>
+            <option value="c">C (+ 0.5$)</option>
+        </select>
+        <h3>How many would you like to order?</h3>
+        <label for=""><input type="radio" name="" value="$">1 - $10</label><br>
+        <label for=""><input type="radio" name="" value="$">2 - $20</label><br>
+        <label for=""><input type="radio" name="" value="$">3 - $25</label><br>
+        <h3>Name <span style="color: red">*</span></h3>
+        <input type="text" name="firstname" placeholder="Firstname" size="15">
+        <input type="text" name="lastname" placeholder="Lastname" size="15"><br>
+        <h3>Email</h3>
+        <input type="email" name="email" value="" size="35"><br>
+        <h3>Phone Number</h3>
+        <input type="text" name="number" size="5"> -
+        <input type="text" name="number" size="5"> -
+        <input type="text" name="number" size="5"><br><br>
+        <input type="button" name="submit" value="Submit">
+    </form>
+</body>
+</html>
