@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Luyện tập sử dụng cấu trúc If Else</title>
+</head>
+<body>
+    <script>
+        let username = prompt("Who's there?");
+        if (username == "Admin") {
+            let password = prompt("Password?");
+            if (password == "TheMaster") {
+                alert("Welcome!");}
+                else 
+                { if (password == null) {
+                    alert("Canceled");
+                    }else alert("Wrong password");
+            }
+        }
+        else if (username == null) {
+            alert("Cancled");
+        }else alert("I don't know you");
+    </script>
+</body>
+</html>
