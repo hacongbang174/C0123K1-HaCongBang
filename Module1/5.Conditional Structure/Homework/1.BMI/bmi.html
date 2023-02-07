@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BMI</title>
+</head>
+<body>
+    <h1>Tính chỉ số cân nặng</h1><br>
+    Nhập cân nặng: (kg)
+    <input type="text" id="kg"> <br><br>
+    Nhập chiều cao: (m)
+    <input type="text" id="m"> <br><br>
+    <button type="button" onclick="check()">Kiểm tra</button><br><br>
+    <div id="result"></div>
+    <script>
+    function check() {    
+        let kg = document.getElementById('kg').value;
+        let m = document.getElementById('m').value;
+        let bmi = kg/( Math.pow(m, 2));
+        if (bmi < 18)
+                result = "Underweight";
+            else if (bmi < 25.0)
+                    result = "Normal";
+                else if (bmi < 30.0)
+                        result = "Overweight";
+                        else
+                            result = "Obese";
+        document.getElementById('result').innerHTML = "Chỉ số BMI là: " + bmi + " - " +result;
+    }
+    </script>
+</body>
+</html>
