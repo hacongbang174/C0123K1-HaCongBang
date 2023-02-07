@@ -1,5 +1,4 @@
-let imgObj = null;
-imgObj = document.getElementById('myImage');
+let imgObj = document.getElementById('myImage');
 function init() {
     imgObj = document.getElementById('myImage');
     imgObj.style.position = 'relative';
