@@ -9,8 +9,5 @@ function Covert() {
             }    else if (FormC == "USD" && To == "VietNam") {
                     document.getElementById("Result").innerHTML ="Result: "+ Number(Amount)*23000 + "Đ";
                     }    else {
-                            document.getElementById("Result").innerHTML ="Result: " + Number(Amount) + "$" ;}
-                    
-                
-           
+                            document.getElementById("Result").innerHTML ="Result: " + Number(Amount) + "$" ;}  
 }
