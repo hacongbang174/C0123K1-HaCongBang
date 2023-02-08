@@ -105,10 +105,13 @@
 </body>
 -->
 <body>
-    <h1>Menu</h1>
-    <p id="Test">menu1</p>
     <script>
-        document.getElementById("Test").innerHTML = "My First JavaScript";
+        function createName(fname, lname) {
+            this.firstName = fname;
+            this.lastName = lname;
+        }
+        let myName = new createName("Vu", "Tong");
+        document.write(myName);
    </script>
 </body>
 </html>
