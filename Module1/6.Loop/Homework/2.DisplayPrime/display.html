@@ -12,7 +12,7 @@
         let count = 0;
         let countSNT = 0; 
         let N = 2;
-            for (N = 2; N < 1000; N++) { // 2,3,4,5,6,7,8,....,1000
+            for (N = 2; N < 1000; N++) {
                 if (count < number) {
                     for (let j = 1; j <= N; j++) {
                         if (N % j == 0) {
@@ -20,8 +20,8 @@
                         }
                     }
                     if (countSNT == 2) {
-                        document.write(N + "<br>"); //4
-                        count += 1; //1
+                        document.write(N + "<br>");
+                        count += 1;
                     }
                     countSNT = 0;
                 } else {
