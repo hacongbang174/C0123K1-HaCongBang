@@ -8,37 +8,15 @@
     <link rel="stylesheet" href="index.css">
 </head>
 <body>
-        <!--<h1>Good</h1><br>
-        <input type="checkbox" id="good">
-        <label data-on="YES" data-off="NO"></label>
-        <h1>Fast</h1><br>
-        <input type="checkbox" id="cheap">
-        <label data-on="YES" data-off="NO"></label>
-        <h1>Cheap</h1>
-        <input type="checkbox" id="fast">
-        <label data-on="YES" data-off="NO"></label>-->
-        <div>
-            <span class="label">Good</span><br />
-            <span class="checkbox">
-                      <input type="checkbox" id="good">
-                      <label data-on="YES" data-off="NO"></label>
-                  </span>
-          </div>
-          <div>
-            <span class="label">Cheap</span><br />
-            <span class="checkbox">
-                      <input type="checkbox" id="cheap">
-                      <label data-on="YES" data-off="NO"></label>
-                  </span>
-          </div>
-          <div>
-            <span class="label">Fast</span><br />
-            <span class="checkbox">
-                      <input type="checkbox" id="fast">
-                      <label data-on="YES" data-off="NO"></label>
-                  </span>
-          </div> 
+    <div class="container">
+        <input type="checkbox" class="good" onchange="changed(this)">
+        <label for="good">Good</label>  <br>
+        <input type="checkbox" class="fast" onchange="changed(this)">
+        <label for="fast">Fast</label>  <br>
+        <input type="checkbox" class="cheap" onchange="changed(this)">
+        <label for="cheap">Cheap</label> 
+    </body>
+    </div>
 
-</body>
 <script src="index.js"></script>
-</html>
+</html> 

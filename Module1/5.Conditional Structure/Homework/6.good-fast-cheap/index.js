@@ -1,42 +1,17 @@
-$(document).ready(function() {
-    var good = false,
-      cheap = false,
-      fast = false;
-    ("#good").on("click", function() {
-  
-      if (!$("#good").is(":checked")) {
-        good = false;
-      } else {
-        good = true;
-        if (fast && cheap) {
-          fast = false;
-          $("#fast").prop('checked', false);
-        }
-      }
-    });
-  
-    ("#cheap").on("click", function() {
-      if (!$("#cheap").is(":checked")) {
-        cheap = false;
-      } else {
-        cheap = true;
-        if (fast && good) {
-          good = false;
-          $("#good").prop('checked', false);
-        }
-      }
-    });
-  
-    ("#fast").on("click", function() {
-      if (!$("#fast").is(":checked")) {
-        fast = false;
-      } else {
-        fast = true;
-        if (cheap && good) {
-          cheap = false;
-          ("#cheap").prop('checked', false);
-        }
-      }
-    });
-  
-  });
+var good = document.querySelector('.good'),
+    fast = document.querySelector('.fast'),
+    cheap = document.querySelector('.cheap');
+function changed(el) {
+  isGood = good.checked;
+  isFast = fast.checked;
+  isCheap = cheap.checked;
+  if (isGood && isFast && isCheap && el == cheap) {
+    fast.checked = false;
+  }
+  if (isGood && isCheap && isFast && el == fast) {
+    good.checked = false;
+  }
+  if (isCheap && isFast && isGood && el == good) {
+    cheap.checked = false;
+  }
+}
