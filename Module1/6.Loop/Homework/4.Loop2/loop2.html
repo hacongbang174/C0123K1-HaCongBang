@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Luyện tập vòng lặp 2</title>
+</head>
+<body>
+    <p>1.Bài 1: In dãy Fibonaci</p>
+    <input type="button" value="click" onclick="bai_1()"> <br>
+    <p>2.Bài 2: Tính giai thừa của một số nguyên dương</p>
+    <input type="button" value="click" onclick="bai_2()"> <br>
+    <p>3.Bài 3: In tam giác vuông. Các góc vuông nằm ở các vị trí khác nhau</p>
+    <input type="button" value="click" onclick="bai_3()"> <br>
+    <p>4.Bài 4:  In hình chữ nhật</p>
+    <input type="button" value="click" onclick="bai_4()"> <br>
+    <p>5.Bài 5:  Viết chương trình tính lãi ngân hàng (lãi mẹ đẻ lại con) khi biết số tiền ban đầu, số tháng cho vay và lãi xuất hàng tháng.</p>
+    <input type="button" value="click" onclick="bai_5()"> <br>
+    <p>6.Bài 6: In hình trái tim.</p>
+    <input type="button" value="click" onclick="bai_6()"> <br>
+    <div style="width: 500px" align="right"></div>
+    <script>
+        function bai_1() {
+            let F = "", F0 = 0, F1 = 1;
+            let result ="";
+            for (let i = 0; i < 100; i++) {
+                if (i == 0) {
+                    F = F0; 
+                    F0 = 0;
+                    F1 = 1
+                    result += F +" ";
+                }else if (i == 1) {
+                    F = F1;
+                    F0 = 0;
+                    F1 = F;
+                    result += F +" ";
+                }else {
+                    F = F0 + F1;
+                    F0 = F1;
+                    F1 = F;
+                    result += F + " ";
+                }
+            }document.write(result);
+        }
+        function bai_2() {
+            let num = parseInt(prompt("Nhập số bạn muốn tính giai thừa"));
+            let result = 1;
+            if(num < 0) {
+                alert("Error!")
+            }else if (num = 0) {
+                result = 0;
+            }else {
+                for (let i = 1; i <= num ; i++) {
+                    result *= i;
+                }document.write(result);
+            }
+        }
+        function bai_3() {
+            for( let i = 0; i < 5; i++){
+                for (let j = 0; j <= i; j++){
+                    star = "*";
+                    document.write(star);
+                }document.write("<br>");
+            } document.write("<br>");
+            for (let i = 5; i > 0; --i) {
+                for (let j = 0; j < i; j++){
+                    star = "*";
+                    document.write(star);
+                }document.write("<br>");
+            }document.write("<br><br>");
+            document.write(`<div style="width: 40px" align="right">`)
+                for( let i = 0; i < 5; i++){
+                for (let j = 0; j <= i; j++){
+                    star = "*";
+                    document.write(star);
+                }document.write("<br>");
+            } document.write("<br>");
+            for (let i = 5; i > 0; --i) {
+                for (let j = 0; j < i; j++){
+                    star = "*";
+                    document.write(star);
+                }document.write("<br>");
+            }document.write("</div>");
+        }
+        function bai_4() {
+            for (let i = 0; i <= 5; i++) {
+                for (let j = 0; j <= 20; j++) {
+                    if(i == 0 || i == 5) {
+                    star = `*`;
+                    document.write(star); 
+                    }else {
+                        star = `<a style="color: white;">*</a>`;
+                    document.write(star);
+                    }
+                    if(j == 0 || j == 20) {
+                        star = `*`;
+                    document.write(star); 
+                    }
+                }document.write("<br>");
+            }
+        }
+        function bai_5() {
+            let money = parseInt(prompt("Nhập số tiền bạn muốn vay (VNĐ)"));
+            let month = parseInt(prompt("Nhập số tháng bạn muốn vay (Tháng)"));
+            let interest = parseInt(prompt("Nhập lãi xuất hàng tháng (%)"));
+            let i = 0;
+            document.write("Số tiền bạn vay là : " + money + "VNĐ <br>");
+            while (i < month) {
+            money = money + Number(money)*(Number(interest)/100);
+            document.write("Số tiền bạn trả tháng " + i + " là " + money +"<br>");
+            i++;
+            }
+            document.write("Tổng số tiền bạn cần phải trả là: " + money + "VNĐ");
+        }
+        function bai_6() {
+            let star;
+            for (let i = 1; i <= 12; i++) {
+                for (let j = 1; j <= 15; j++) {
+                    star = `* `;
+                    if(i==1){
+                    if (j==3 || j==4 || j==5 || j==11 || j==12 || j==13) {
+                        star = `* `;
+                        document.write(star); 
+                    }else {
+                        star = `<a style="color: white;">* </a>`;
+                    document.write(star);
+                    }
+                }else if(i==2) {
+                    if (j==2 || j==6 || j==10 || j==14) {
+                        star = `* `;
+                        document.write(star); 
+                    }else {
+                        star = `<a style="color: white;">* </a>`;
+                    document.write(star);
+                    }
+                }else if(i==3) {
+                    if (j==1 || j==7 || j==9 || j==15) {
+                        star = `* `;
+                        document.write(star); 
+                    }else {
+                        star = `<a style="color: white;">* </a>`;
+                    document.write(star);
+                    }
+                }else if(i==4) {
+                    if (j==1 || j==8 || j==15) {
+                        star = `* `;
+                        document.write(star); 
+                    }else {
+                        star = `<a style="color: white;">* </a>`;
+                    document.write(star);
+                    }
+                }else if(i==5) {
+                    if (j==1 || j==15) {
+                        star = `* `;
+                        document.write(star); 
+                    }else {
+                        star = `<a style="color: white;">* </a>`;
+                    document.write(star);
+                    }
+                }else if(i==6) {
+                    if (j==2 || j==14) {
+                        star = `* `;
+                        document.write(star); 
+                    }else {
+                        star = `<a style="color: white;">* </a>`;
+                    document.write(star);
+                    }
+                }else if(i==7) {
+                    if (j==3 || j==13) {
+                        star = `* `;
+                        document.write(star); 
+                    }else {
+                        star = `<a style="color: white;">* </a>`;
+                    document.write(star);
+                    }
+                }else if(i==8) {
+                    if (j==4 || j==12) {
+                        star = `* `;
+                        document.write(star); 
+                    }else {
+                        star = `<a style="color: white;">* </a>`;
+                    document.write(star);
+                    }
+                }else if(i==9) {
+                    if (j==5 || j==11) {
+                        star = `* `;
+                        document.write(star); 
+                    }else {
+                        star = `<a style="color: white;">* </a>`;
+                    document.write(star);
+                    }
+                }else if(i==10) {
+                    if (j==6 || j==10) {
+                        star = `* `;
+                        document.write(star); 
+                    }else {
+                        star = `<a style="color: white;">* </a>`;
+                    document.write(star);
+                    }
+                }else if(i==11) {
+                    if (j==7 || j==9) {
+                        star = `* `;
+                        document.write(star); 
+                    }else {
+                        star = `<a style="color: white;">* </a>`;
+                    document.write(star);
+                    }
+                }else if(i==12) {
+                    if (j==8) {
+                        star = `* `;
+                        document.write(star);                        
+                    }else {
+                        star = `<a style="color: white;">* </a>`;
+                    document.write(star);
+                    }
+                }
+                } document.write("<br>");
+            }
+        }   
+    </script>
+</body>
+</html>
