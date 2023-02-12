@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Faking Textarea on TypingAssignment</title>
+</head>
+<body>
+    <h1>Type anything slowly</h1><br>
+    <form name="f">
+    <textarea name="text" id="" cols="50" rows="5" onkeydown="typeTextarea()"></textarea>
+    </form>
+    <script>
+        let face = new Array();
+        let textView = "";
+            face[1]="I";
+            face[2]=" ";
+            face[3]="L";
+            face[4]="O";
+            face[5]="V";
+            face[6]="E";
+            face[7]=" ";
+            face[8]="Y";
+            face[9]="O";
+            face[10]="U";
+            face[11]="!";
+            face[12]="!";
+        function typeTextarea() {
+            let text = document.f.text.value;
+            if (text.length > 0) {
+                for (let i = 1; i <= text.length; i++) {
+                    textView = textView + face[i];
+                    if (i == 12) {
+                        document.f.text.value ="";
+                        textView = "";
+                    }
+                }
+            }
+            document.f.text.value = textView;
+            textView ="";
+        }
+    </script>
+</body>
+</html>
