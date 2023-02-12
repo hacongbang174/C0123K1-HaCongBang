@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Từ điển</title>
+</head>
+<body>
+    <p>Nhập từ bạn muốn tra :</p>
+    <label for="string"><input type="text" id="English"></label>
+    <input type="button" onclick="dictionary()" value="Dịch">
+    <p id="result"></p>
+    <script>
+        function dictionary() {
+            let search = document.getElementById('English').value;
+            let eng = ["apple","banana"];
+            let vn = ["quả táo","quả chuối"];
+            let index_eng;
+            let result = ""; 
+            for (let i = 0; i < eng.length; i++) {
+                if (search === eng[i]){
+                    index_eng = i;
+                for (let j = 0; j < vn.length; j++) {
+                    if (index_eng == j) {
+                        result = vn[j];
+                        }
+                    }
+                }
+            }document.getElementById('result').innerHTML = result;
+        }
+        
+    </script>
+</body>
+</html>
