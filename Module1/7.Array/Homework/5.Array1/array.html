@@ -20,11 +20,11 @@
     <p>6. Bài 6: Viết chương trình khởi tạo/nhập vào một mảng số nguyên gồm 10 phần tử, nhập/tạo phần tử số nguyên V. Chương trình tìm xem V có nằm trong mảng số nguyên không? Nếu V thuộc mảng số nguyên thì in ra "V is in the array" còn lại in ra "V is not in the array".</p>
     <input type="button" value="click" onclick="bai_6()"> <br>
     <p>7. Bài 7: Viết chương trình khởi tạo/nhập vào một mảng số nguyên gồm 10 phần tử, nhập/tạo phần tử số nguyên V. Chương trình kiểm tra xem V có thuộc mảng đã cho không, nếu V thuộc mảng đã cho xoá V khỏi mảng (Bản chất việc xoá ở đây tức là dịch phần tử ở bên phải V sang vị trí của V, và gán 0 cho phần tử cuối cùng của mảng)</p>
-    <input type="button" value="click" onclick="bai_4()"> <br>
+    <input type="button" value="click" onclick="bai_7()"> <br>
     <p>8. Bài 8: Viết chương trình khởi tạo/nhập vào một mảng số nguyên gồm 10 phần tử. Chương trình sắp xếp mảng theo thứ tự giảm dần và hiển thị ra mảng đã được sắp xếp.</p>
-    <input type="button" value="click" onclick="bai_5()"> <br>
+    <input type="button" value="click" onclick="bai_8()"> <br>
     <p>9. Bài 9: Viết chương trình khởi tạo/nhập vào 2 mảng số nguyên gồm 10 phần tử, gọi là mảng a và b. Mảng c là một mảng được khai báo gồm 20 phần tử số nguyên. Chương trình sẽ lưu các phần tử được nối từ hai mảng b và a vào mảng c. Hiển thị mảng c.</p>
-    <input type="button" value="click" onclick="bai_6()"> <br>
+    <input type="button" value="click" onclick="bai_9()"> <br>
 
     <script>
         function bai_1() {
@@ -90,10 +90,6 @@
         }
         function bai_4() {
             let exp4 = new Array();
-            let result ="";
-            let total = 0;
-            let n = 0;
-            let average ="";
             for (let i = 0; i < 5; i++) {
                 exp4[i] = parseInt(prompt("Nhập số nguyên"));
             }
@@ -110,7 +106,81 @@
         document.write(exp4);
         }
         function bai_5() {
+            let exp5 = new Array();
+            let exp51 = new Array();
+            let result ="";
+            let count = 0;
+            let n = 0;
+            for (let i = 0; i < 10; i++) {
+                exp5[i] = parseInt(prompt("Nhập số nguyên"));
+            }
+            for (let x = 0; x < exp5.length; x++) {
+                if (exp5[x] < 0) {
+                    exp51[n] = exp5[x];
+                    count = count + 1;
+                    n += 1;
+                }
+            }
+            document.write(exp5 + "<br>");
+            document.write("Chuỗi trên có " + count + " số nguyên âm là " + exp51);
             
+        }
+        function bai_6() {
+            let exp6 = new Array();
+            let result = "";
+            for (let i = 0; i < 10; i++) {
+                exp6[i] = parseInt(prompt("Nhập số nguyên"));
+            }
+            document.write(exp6 + "<br>");
+            let V = parseInt(prompt("Nhập số nguyên V"));
+            for (let j = 0; j < exp6.length; j++) {
+                if (exp6[j] != V) {
+                    result = "V = " + V + " is not in the array";
+                }else {
+                    result = "V = " + V + " is in the array";
+                }
+            }
+            document.write(result);
+        }
+        function bai_7() {
+            let exp7 = new Array();
+            let result = "";
+            for (let i = 0; i < 10; i++) {
+                exp7[i] = parseInt(prompt("Nhập số nguyên"));
+            }
+            document.write(exp7 + "<br>");
+            let V = parseInt(prompt("Nhập số nguyên V"));
+            let n = exp7.length - 1;
+            for (let j = 0; j <= exp7.length; j++) {
+                if (exp7[j] == V) {
+                    exp7.splice(j,1); 
+                    exp7[n] = 0;
+                }
+            }
+            document.write(exp7);
+        }
+        function bai_8() {
+            let exp8 = new Array();
+            for (let i = 0; i < 10; i++) {
+                exp8[i] = parseInt(prompt("Nhập số nguyên"));
+            }
+            document.write(exp8 + "<br>");
+            let result = exp8.sort(function(a,b){return a - b});
+            document.write(result);
+        }
+        function bai_9() {
+            let a = new Array();
+            for (let i = 0; i < 10; i++) {
+                a[i] = parseInt(prompt("Nhập số nguyên mảng a"));
+            }
+            document.write("Mảng a: " + a + "<br>");
+            let b = new Array();
+            for (let i = 0; i < 10; i++) {
+                b[i] = parseInt(prompt("Nhập số nguyên mảng b"));
+            }
+            document.write("Mảng b: " + b + "<br>");
+            let c = new Array();
+            document.write("Mảng c: " + c.concat(b,a));
         }
     </script>
 </body>

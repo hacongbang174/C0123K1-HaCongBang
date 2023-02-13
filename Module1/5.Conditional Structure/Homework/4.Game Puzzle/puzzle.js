@@ -1,21 +1,21 @@
 var Images = {
 	imgsDB: 
 	[
-	["funny-cat1_part1x1.jpg", 
-	"funny-cat1_part2x1.jpg", 
-	"funny-cat1_part3x1.jpg", 
-	"funny-cat1_part4x1.jpg", 
-	"funny-cat1_part5x1.jpg"],
-	["monkey_part1x1.jpg",
-	"monkey_part2x1.jpg",
-	"monkey_part3x1.jpg",
-	"monkey_part4x1.jpg",
-	"monkey_part5x1.jpg"],
-	["panda_swap_part1x1.jpg",
-	"panda_swap_part2x1.jpg",
-	"panda_swap_part3x1.jpg",
-	"panda_swap_part4x1.jpg",
-	"panda_swap_part5x1.jpg"]
+		["funny-cat1_part1x1.jpg", 
+		"funny-cat1_part2x1.jpg", 
+		"funny-cat1_part3x1.jpg", 
+		"funny-cat1_part4x1.jpg", 
+		"funny-cat1_part5x1.jpg"],
+		["monkey_part1x1.jpg",
+		"monkey_part2x1.jpg",
+		"monkey_part3x1.jpg",
+		"monkey_part4x1.jpg",
+		"monkey_part5x1.jpg"],
+		["panda_swap_part1x1.jpg",
+		"panda_swap_part2x1.jpg",
+		"panda_swap_part3x1.jpg",
+		"panda_swap_part4x1.jpg",
+		"panda_swap_part5x1.jpg"]
 	],
 	imgpos: [0, 0, 0, 0, 0]
 };
