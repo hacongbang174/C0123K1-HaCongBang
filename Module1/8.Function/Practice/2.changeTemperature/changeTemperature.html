@@ -14,7 +14,7 @@
             onchange="temperatureConverter(this.value)">
         </p>
         <p>Celsius: <span id="outputCelsius"></span></p>
-    <script>
+    <script> 
         function temperatureConverter(valNum) {
             valNum = parseFloat(valNum);
             document.getElementById('outputCelsius').innerHTML = (valNum-32) / 1.8;

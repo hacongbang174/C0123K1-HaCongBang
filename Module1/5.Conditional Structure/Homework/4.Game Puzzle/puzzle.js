@@ -18,24 +18,21 @@ var Images = {
 	"panda_swap_part5x1.jpg"]
 	],
 	imgpos: [0, 0, 0, 0, 0]
-	
-}
+};
 
 function placeImage(imgpos1, imgToggle) {
 	Images.imgpos[imgpos1 - 1] = imgToggle;        // Set image pointer in Object array
 	var imageName = "#img" + imgpos1.toString();   // create JQUERY handler
 	$(imageName).attr("src", "./img/" + Images.imgsDB[imgToggle][imgpos1 - 1]);
 
-}
-
+};
 function setImagesRandom() {
 	for (var i=1; i <= 5; i++)
 	{
 		var num1 = Math.floor ((Math.random() * 3));
 		placeImage(i, num1);
 	}
-}
-
+};
 function imageClick(imgpos1) {
 	var imgToggle = Images.imgpos[imgpos1 - 1];
 	if (imgToggle === 0) {
@@ -47,9 +44,7 @@ function imageClick(imgpos1) {
 	else if (imgToggle === 2) {
 		placeImage(imgpos1, 0);
 	}
-	
-}
-
+};
 function checkSet() {
 	var setImg = Images.imgpos[0];
 	var setFlag = true;
@@ -59,18 +54,15 @@ function checkSet() {
 			setFlag = false;
 		}
 	}
-
+	
 	if (setFlag) {
 		$('img').css("box-shadow", "4px 4px 9px red")
 	}
 	else {
 		$('img').css("box-shadow", "2px 3px 3px black")
 	}
-}
-
-var main = function () 
-{
-
+};
+var main = function () {
 	setImagesRandom();
 
 	$("#img1").click(function(){
@@ -93,6 +85,5 @@ var main = function ()
 		imageClick(5);
 		checkSet();
 	})
-
-}
+};
 $(document).ready(main());
