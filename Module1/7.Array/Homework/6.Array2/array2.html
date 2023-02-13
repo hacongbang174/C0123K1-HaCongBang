@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p>1. Bài 1: Viết chương trình khởi tạo mảng 2 chiều, gồm một bộ các phần tử có sẵn,  in ra các phần tử trong mảng. Chú ý: Sử dụng vòng lặp for lồng nhau.</p>
+    <input type="button" value="click" onclick="bai_1()"> <br>
+    <p>2. Bài 2: Viết một chương trình để in các ký tự trong một mảng theo thứ tự đảo ngược.</p>
+    <input type="button" value="click" onclick="bai_2()"> <br>
+    <p>3. Bài 3: Viết một chương trình khai báo một mảng ký tự và kích thước của mảng. Chương trình này đếm số ký tự số trong mảng. </p>
+    <input type="button" value="click" onclick="bai_3()"> <br>
+    <p>4. Bài 4: Viết một chương trình để đếm số từ trong một chuỗi.</p>
+    <input type="button" value="click" onclick="bai_4()"> <br>
+    <p>5. Bài 5: Viết một chương trình nhập vào 2 chuỗi, sau đó kiểm tra xem hai chuỗi có giống nhau hay không.</p>
+    <input type="button" value="click" onclick="bai_5()"> <br>
+    <p>6. Bài 6: Viết chương trình nhập vào một mảng ký tự, tìm tất cả các ký tự trong mảng là (-) và thay thế các ký tự này bởi ký tự ( _ ).</p>
+    <input type="button" value="click" onclick="bai_6()"> <br>
+    <script>
+        function bai_1() {
+            let a = [
+                [1,2,1,24],
+                [8,11,9,4],
+                [7,0,7,27],
+                [7,4,18,24],
+                [3,10,26,7]
+            ];
+            for (let i = 0; i < a.length; i++) {
+                document.write("row " + i + "<br>");
+                for(let j = 0; j < 4; j++) {
+                    document.write(a[i][j] + "<br>");
+                }
+            }
+        }
+        function bai_2() {
+            let array = ['c','s','c','2','6','1'];
+            for (let i = array.length - 1; i>=0; i--) {
+                document.write(array[i]);
+            }
+        }
+        function bai_3() {
+        let array = [1,"c",2,4,"o","d",12,6,"e",9,5,"g",17,"y",24,"m"];
+        let n = 0;
+        for (let i = 0; i < array.length; i++) {
+            if (array[i] % 2 == 0 || array[i] % 2 == 1) {
+                n++;
+            }
+        }
+        document.write("Mảng: "+ array + "<br> Kích thước mảng: " + array.length + "<br>");
+        document.write("Số ký tự số là " + n);
+        }
+        function bai_4() {
+            let array = ["Hello World", "Codegym", "Việt Nam"];
+            document.write("Mảng : " + array + "<br>");
+            let n = 0
+            for (let i = 0; i < array.length; i++) {
+                document.write("Số từ trong chuỗi thứ " + i + " là: " + array[i].length + "<br>");
+            }
+        }
+        function bai_5() {
+            let str1 = prompt("Nhập chuỗi 1");
+            let str2 = prompt("Nhập chuỗi 2");
+            if( str1.length != str2.length) {
+                document.write("Hai chuỗi không giống nhau");
+            }else {
+                let i = 0;
+                let boolean = true;
+                while(i < str1.length) {
+                    if (str1[i] === str2[i]) {
+                        boolean = true;
+                    }else {
+                        boolean = false;
+                    }
+                    i++
+                }
+                if (boolean == true) {
+                    document.write("Hai chuỗi giống nhau");
+                }else {
+                    document.write("Hai chuỗi không giống nhau");
+                }
+            }
+        }
+        function bai_6() {
+            let array = [1,"c",2,"-","o","d","-",6,"e",9,"-","g",17,"y",24,"m"];
+            document.write(array + "<br>")
+            let n = 0;
+            for (let i = 0; i < array.length; i++) {
+                if (array[i]  === "-") {
+                    array.splice(i,1,"_");
+                }
+            }
+            document.write(array);
+        }
+    </script>
+</body>
+</html>
