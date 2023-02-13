@@ -121,18 +121,18 @@ function moneyElectric() {
 function incomeTax() {
     let income = parseInt(document.getElementById('income').value);
     if (income > 80000000) {
-        document.getElementById('result11').innerHTML = (Number(income)*0.35 - 9850000) + " VNĐ";
+        document.getElementById('result11').innerHTML = "Lương của bạn bậc 1. Thuế thu nhập cá nhân là: " + (Number(income)*0.35 - 9850000) + " VNĐ";
     }else if (income > 80000000) {
-        document.getElementById('result11').innerHTML = (Number(income)*0.3 - 5850000) + " VNĐ";
+        document.getElementById('result11').innerHTML = "Lương của bạn bậc 2. Thuế thu nhập cá nhân là: " + (Number(income)*0.3 - 5850000) + " VNĐ";
     }else if (income > 52000000) {
-        document.getElementById('result11').innerHTML = (Number(income)*0.25 - 3250000) + " VNĐ";
+        document.getElementById('result11').innerHTML = "Lương của bạn bậc 3. Thuế thu nhập cá nhân là: " + (Number(income)*0.25 - 3250000) + " VNĐ";
     }else if (income > 18000000) {
-        document.getElementById('result11').innerHTML = (Number(income)*0.2 - 1650000) + " VNĐ";
+        document.getElementById('result11').innerHTML = "Lương của bạn bậc 4. Thuế thu nhập cá nhân là: " + (Number(income)*0.2 - 1650000) + " VNĐ";
     }else if (income > 10000000) {
-        document.getElementById('result11').innerHTML = (Number(income)*0.15 - 750000) + " VNĐ";
+        document.getElementById('result11').innerHTML = "Lương của bạn bậc 5. Thuế thu nhập cá nhân là: " + (Number(income)*0.15 - 750000) + " VNĐ";
     }else if (income > 5000000) {
-        document.getElementById('result11').innerHTML = (Number(income)*0.1 - 250000) + " VNĐ";
-    }else document.getElementById('result11').innerHTML = Number(income)*0.05 + " VNĐ";
+        document.getElementById('result11').innerHTML = "Lương của bạn bậc 6. Thuế thu nhập cá nhân là: " + (Number(income)*0.1 - 250000) + " VNĐ";
+    }else document.getElementById('result11').innerHTML = "Lương của bạn bậc 7. Thuế thu nhập cá nhân là: " + Number(income)*0.05 + " VNĐ";
 }
 //Bài 12
 function interestBank() {
