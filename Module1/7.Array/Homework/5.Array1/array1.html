@@ -28,7 +28,7 @@
 
     <script>
         function bai_1() {
-            let exp1 = new Array();
+            let exp1 = new Array(10);
             let count = 0;
             for (let i = 0; i < 10; i++) {
                 exp1[i] = parseInt(prompt("Nhập số nguyên"));
@@ -40,7 +40,7 @@
             document.write ("Có " + count + " số nguyên lớn hơn hoặc bằng 10");
         }
         function bai_2() {
-            let exp2 = new Array();
+            let exp2 = new Array(10);
             let result ="";
             for (let i = 0; i < 10; i++) {
                 exp2[i] = parseInt(prompt("Nhập số nguyên"));
@@ -126,7 +126,7 @@
             
         }
         function bai_6() {
-            let exp6 = new Array();
+            let exp6 = new Array(10);
             let result = "";
             for (let i = 0; i < 10; i++) {
                 exp6[i] = parseInt(prompt("Nhập số nguyên"));
@@ -134,16 +134,17 @@
             document.write(exp6 + "<br>");
             let V = parseInt(prompt("Nhập số nguyên V"));
             for (let j = 0; j < exp6.length; j++) {
-                if (exp6[j] != V) {
-                    result = "V = " + V + " is not in the array";
-                }else {
+                if (exp6[j] == V) {
                     result = "V = " + V + " is in the array";
+                    break;
+                }else {
+                    result = "V = " + V + " is not in the array";
                 }
             }
             document.write(result);
         }
         function bai_7() {
-            let exp7 = new Array();
+            let exp7 = new Array(10);
             let result = "";
             for (let i = 0; i < 10; i++) {
                 exp7[i] = parseInt(prompt("Nhập số nguyên"));
@@ -160,7 +161,7 @@
             document.write(exp7);
         }
         function bai_8() {
-            let exp8 = new Array();
+            let exp8 = new Array(10);
             for (let i = 0; i < 10; i++) {
                 exp8[i] = parseInt(prompt("Nhập số nguyên"));
             }
@@ -169,12 +170,12 @@
             document.write(result);
         }
         function bai_9() {
-            let a = new Array();
+            let a = new Array(10);
             for (let i = 0; i < 10; i++) {
                 a[i] = parseInt(prompt("Nhập số nguyên mảng a"));
             }
             document.write("Mảng a: " + a + "<br>");
-            let b = new Array();
+            let b = new Array(10);
             for (let i = 0; i < 10; i++) {
                 b[i] = parseInt(prompt("Nhập số nguyên mảng b"));
             }
