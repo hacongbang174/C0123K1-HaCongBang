@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
+
+<head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -104,14 +105,37 @@
     </table>
 </body>
 -->
+
 <body>
     <script>
+        /*
         function createName(fname, lname) {
             this.firstName = fname;
             this.lastName = lname;
         }
         let myName = new createName("Vu", "Tong");
         document.write(myName);
-   </script>
+        */
+        let person = {
+            name: {
+                first: 'Bob',
+                last: 'Smith'
+            },
+            age: 32,
+            gender: 'male',
+            interests: ['music', 'skiing'],
+            bio: function () {
+                alert(this.name.first + ' ' + this.name.last + ' is ' + this.age + ' years old. He likes ' + this.interests[0] + ' and ' + this.interests[1] + '.');
+            },
+            greeting: function () {
+                alert("Hi! I'm " + this.name.first + '.');
+            }
+        };
+        let myDataName = 'height';
+        let myDataValue = '1.75m';
+        person[myDataName] = myDataValue;
+        console.log(person.height)
+    </script>
 </body>
+
 </html>
