@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Luyện tập tạo và sử dụng hàm 01</title>
+</head>
+
+<body>
+    <p>1. Bài 1: Viết hàm tính bình phương của một số bất kỳ được đưa vào. Gọi hàm vừa xây dựng được.</p>
+    <input type="button" value="click" onclick="bai_1()"> <br>
+    <p>2. Bài 2: Viết hàm tính diện tích, hàm tính chu vi hình tròn. Gọi hàm vừa xây dựng được.</p>
+    <input type="button" value="click" onclick="bai_2()"> <br>
+    <p>3. Bài 3: Viết hàm tính giai thừa của một số nguyên bất kỳ được đưa vào. Gọi hàm vừa xây dựng được.</p>
+    <input type="button" value="click" onclick="bai_3()"> <br>
+    <p>4. Bài 4: Viết hàm kiểm tra xem ký tự nhập vào có phải là ký tự số không. Nếu là ký tự số hàm trả về true, ngược
+        lại trả về false.</p>
+    <input type="button" value="click" onclick="bai_4()"> <br>
+    <p>5. Bài 5: Viết hàm nhận vào 3 số nguyên bất kỳ, trả về số nguyên có giá trị nhỏ nhất.</p>
+    <input type="button" value="click" onclick="bai_5()"> <br>
+    <p>6. Bài 6: Viết hàm nhận vào một số, kiểm tra xem nếu số đưa vào có phải là nguyên dương không. Nếu là nguyên
+        dương trả về true, ngược lại trả về false.</p>
+    <input type="button" value="click" onclick="bai_6()"> <br>
+    <p>7. Bài 7: Viết hàm truyền vào 2 số nguyên bất kì, thực hiện đổi chỗ hai số nguyên đó.</p>
+    <input type="button" value="click" onclick="bai_7()"> <br>
+    <p>8. Bài 8: Viết hàm truyền vào mảng số nguyên bất kỳ, sau đó đảo ngược mảng số nguyên đó.</p>
+    <input type="button" value="click" onclick="bai_8()"> <br>
+    <p>9. Bài 9: Viết hàm truyền vào một mảng ký tự, và một ký tự bất kỳ, kiểm tra xem ký tự bất kỳ đó có nằm trong mảng
+        không. Nếu có trả về số lần xuất hiện của ký tự đó, nếu không trả về -1. </p>
+    <input type="button" value="click" onclick="bai_9()"> <br>
+    <script>
+        function bai_1() {
+            let num = Number(prompt("Nhập số"));
+            result = num * num;
+            document.write(result);
+        }
+        function bai_2() {
+            let r = Number(prompt("Nhập bán kính hình tròn"));
+            chuvi = 2 * 3.14 * r;
+            area = 3.14 * r * r;
+            document.write("Chu vi hình tròn: " + chuvi + "<br>");
+            document.write("Diện tích hình tròn: " + area);
+        }
+        function bai_3() {
+            let num = parseInt(prompt("Nhập số bạn muốn tính giai thừa"));
+            let result = 1;
+            if (num < 0) {
+                alert("Error!")
+            } else if (num == 0) {
+                result = 1;
+            } else {
+                for (let i = 1; i <= num; i++) {
+                    result *= i;
+                }
+            } document.write(result);
+        }
+        function bai_4() {
+            let index = prompt("Nhập ký tự");
+            if (index % 2 == 0 || index % 2 == 1) {
+                document.write("true");
+            } else document.write("false")
+        }
+        function bai_5() {
+            let a = parseInt(prompt("Nhập số nguyên thứ nhất"));
+            let b = parseInt(prompt("Nhập số nguyên thứ hai"));
+            let c = parseInt(prompt("Nhập số nguyên thứ ba"));
+            if (a > b) {
+                if (b > c) {
+                    document.write(c + " là số nhỏ nhất");
+                } else document.write(b + " là số nhỏ nhất");
+            } else if (a < c) {
+                document.write(a + " là số nhỏ nhất");
+            } else document.write(c + " là số nhỏ nhất");
+        }
+        function bai_6() {
+            let num = Number(prompt("Nhập một số"));
+            if (num > 0) {
+                if (num % 2 == 0 || num % 2 == 1) {
+                    document.write("true")
+                } else document.write("false");
+            } else document.write("false");
+        }
+        function bai_7() {
+            let a = parseInt(prompt("Nhập số thứ nhất"));
+            let b = parseInt(prompt("Nhập số thứ hai"));
+            let num = "";
+            num = a;
+            a = b;
+            b = num;
+            document.write(a + "<br>");
+            document.write(b);
+        }
+        function bai_8() {
+            let array = new Array();
+            for (i = 0; i < 5; i++) {
+                array[i] = parseInt(prompt("Nhập số nguyên bất kỳ"));
+            }
+            document.write(array + "<br>");
+            array2 = array.reverse();
+            document.write(array2);
+        }
+        function bai_9() {
+            let array = ["c", 17, "g", 24, "d", 9, "o", "e", 1, "y", "c", 17, "m"]
+            let char = prompt("Nhập ký tự bất kỳ");
+            let boolean = "";
+            let position = 0;
+            let n = 0;
+            for (let i = 0; i < array.length; i++) {
+                if (char == array[i]) {
+                    position = i;
+                    boolean = true;
+                    n += 1;
+                }
+            }
+            if (boolean == true) {
+                document.write(n);
+            }else {
+                document.write("-1");
+            }
+        }
+    </script>
+</body>
+
+</html>
