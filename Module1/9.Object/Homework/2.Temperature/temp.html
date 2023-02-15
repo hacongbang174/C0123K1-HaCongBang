@@ -1,12 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>[Bài tập] Xây dựng lớp mô tả Temperature</title>
 </head>
-<body>  
-    
+
+<body>
+    <script>
+        let Temperature = function () {
+            this.setC = function (C) {
+                this.C = C;
+            }
+            this.getCovertCtoF = function () {
+                return (9 * this.C) / 5 + 32;
+            }
+            this.getCovertCtoKenvin = function () {
+                return this.C + 273.15;
+            }
+        }
+
+        let C = Number(prompt("Nhập nhiệt độ C"));
+        if (C >= -273) {
+            let temp = new Temperature();
+            temp.setC(C);
+            let F = temp.getCovertCtoF();
+            let K = temp.getCovertCtoKenvin();
+            document.write("Độ F: " + F + "<br>Độ Kenvin: " + K);
+        } else {
+            alert("Nhiệt độ quá thấp, nhập lại nhiệt độ C");
+            C = Number(prompt("Nhập nhiệt độ C"));
+        }
+
+    </script>
 </body>
+
 </html>
