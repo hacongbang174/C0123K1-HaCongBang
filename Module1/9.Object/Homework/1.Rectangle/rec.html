@@ -1,12 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>[Bài tập] Xây dựng lớp mô tả hình chữ nhật</title>
 </head>
+
 <body>
-    
+    <p id="rect"></p>
+    <canvas id="rectangle" width="500px" height="300px" style="border: 1 solid #d3d3d3;"></canvas>
+    <script>
+        let Rectangle = function() {
+            this.setWidth = function(width) {
+                this.width = width;
+            }
+            this.setHeight = function(height) {
+                this.height = height;
+            }
+            this.getArea = function() {
+                return this.width*this.height;
+            }
+            this.getPerimeter = function() {
+                return (this.width + this.height)*2;
+            }
+        }
+        let rectangle = new Rectangle();
+        rectangle.setWidth(100);
+        rectangle.setHeight(50);
+        let area = rectangle.getArea();
+        let perimeter = rectangle.getPerimeter();
+        document.getElementById('rect').innerText = "Diện tích: " + area + ", Chu vi: " + perimeter;
+
+        let createRectangle = function() {
+            let ctx = document.getElementById('rectangle').getContext('2d');
+            ctx.fillStyle = 'red';
+            ctx.fillRect(0,0,rectangle.width,rectangle.height);
+        }
+        createRectangle();
+    </script>
 </body>
+
 </html>
