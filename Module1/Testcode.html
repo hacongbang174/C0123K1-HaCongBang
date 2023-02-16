@@ -115,7 +115,7 @@
         }
         let myName = new createName("Vu", "Tong");
         document.write(myName);
-        */
+        
         let person = {
             name: {
                 first: 'Bob',
@@ -134,9 +134,36 @@
         let myDataName = 'height';
         let myDataValue = '1.75m';
         person[myDataName] = myDataValue;
-        console.log(person.height)
+        console.log(person.height) 
+
+        function Mobile() {
+            this.message = "";
+            this.setMessage = function(message) {
+                this.message = message;
+            }
+            this.getMessage = function() {
+                return this.message;
+            }
+            this.sendMessage = function(message, mobile) {
+                mobile.setMessage(message);
+            }
+        }
+        let nokia = new Mobile();
+        let iphone = new Mobile();
+        nokia.sendMessage("hello",iphone);
+        let mess = iphone.getMessage()
+        document.write(mess); */
+        let x = 1;
+            function chargeBatteryNokia() {
+                document.getElementById('batteryNokia').innerHTML = x++ ;
+            }
+            let y = setInterval(chargeBatteryNokia,100);
+            if (y == 101) {
+                clearInterval(y);
+            }
     </script>
+    <input type="button" value="" onclick="chargeBatteryNokia()">
+    <p id = "batteryNokia"></p>
 </body>
 
 </html>
--->

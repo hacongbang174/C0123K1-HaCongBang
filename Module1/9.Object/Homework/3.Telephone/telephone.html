@@ -1,12 +1,82 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>[Bài tập] Xây dựng lớp mô tả điện thoại</title>
 </head>
+
 <body>
-    
+    <table border="1">
+        <caption>Nokia</caption>
+        <tr>
+            <td>Pin (%)</td>
+            <td colspan="2" style="text-align: center;"><span id="batteryNokia"></span></td>
+        </tr>
+        <tr>
+            <td>Message</td>
+            <td><input type="text" id="messageNokia"></td>
+            <td><input type="button" onclick="sendMessageFromNokia()" value="Gửi"></td>
+        </tr>
+        <tr>
+            <td>Message Sent</td>
+            <td><span id="memoryNokiaSent"></span></td>
+            <td><input type="button" onclick="openMemoryMessageSentNokia()" value="Mở"></td>
+        </tr>
+        <tr>
+            <td>Inbox</td>
+            <td><span id="memoryNokiaInbox"></span></td>
+            <td><input type="button" onclick="openMemoryMessageInboxNokia()" value="Mở"></td>
+        </tr>
+        <tr>
+            <td>Status</td>
+            <td colspan="2" style="text-align: center;"><input id="statusNokia" type="button" onclick="statusNokia()"
+                    value="">
+            </td>
+        </tr>
+        <tr>
+            <td>Charge Battery</td>
+            <td colspan="2" style="text-align: center;"><input type="button" value="Sạc pin"
+                    onclick="chargeBatteryNokia()"></td>
+        </tr>
+    </table>
+    <br><br><br>
+    <table border="1">
+        <caption>Iphone</caption>
+        <tr>
+            <td>Pin (%)</td>
+            <td colspan="2" style="text-align: center;"><span id="batteryIphone"></span></td>
+        </tr>
+        <tr>
+            <td>Message</td>
+            <td><input type="text" id="messageIphone"></td>
+            <td><input type="button" onclick="sendMessageFromIphone()" value="Gửi"></td>
+        </tr>
+        <tr>
+            <td>Message Sent</td>
+            <td><span id="memoryIphoneSent"></span></td>
+            <td><input type="button" onclick="openMemoryMessageSentIphone()" value="Mở"></td>
+        </tr>
+        <tr>
+            <td>Inbox</td>
+            <td><span id="memoryIphoneInbox"></span></td>
+            <td><input type="button" onclick="openMemoryMessageInboxIphone()" value="Mở"></td>
+        </tr>
+        <tr>
+            <td>Status</td>
+            <td colspan="2" style="text-align: center;"><input id="statusIphone" type="button" onclick="statusIphone()"
+                    value="">
+            </td>
+        </tr>
+        <tr>
+            <td>Charge Battery</td>
+            <td colspan="2" style="text-align: center;"><input type="button" value="Sạc pin"
+                    onclick="chargeBatteryIphone()"></td>
+        </tr>
+    </table>
+    <script src="telephone.js"></script>
 </body>
+
 </html>
