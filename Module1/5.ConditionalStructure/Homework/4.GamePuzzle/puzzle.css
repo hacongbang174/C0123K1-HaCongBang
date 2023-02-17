@@ -11,7 +11,10 @@ html, body {
       margin-top: 1em;
       margin: auto;
   }
-  
+  .win {
+    display: block;
+    box-shadow: 0 0 15px red;
+  }
   img {
       display: block;
       margin: 1em;

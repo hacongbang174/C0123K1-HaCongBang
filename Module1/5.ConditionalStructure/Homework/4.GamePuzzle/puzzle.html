@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,16 +8,138 @@
     <title>Game Puzzle</title>
     <link rel="stylesheet" href="puzzle.css">
 </head>
+
 <body>
-    <div class="container-fluid">
-        <div class="puzzles">
-          <img id="img1" src="" alt="" />
-          <img id="img2" src="" alt="" />
-          <img id="img3" src="" alt="" />
-          <img id="img4" src="" alt="" />
-          <img id="img5" src="" alt="" />
+        <div class="puzzles" id ="css">
+            <img id="img1" src="img/1x1.jpg" id="img1" onclick="changeImage1()" />
+            <img id="img2" src="img/2x3.jpg" id="img2" onclick="changeImage2()" />
+            <img id="img3" src="img/3x2.jpg" id="img3" onclick="changeImage3()" />
+            <img id="img4" src="img/4x1.jpg" id="img4" onclick="changeImage4()" />
+            <img id="img5" src="img/5x2.jpg" id="img5" onclick="changeImage5()" />
         </div>
-    </div>
-    <script type="text/javascript" src="puzzle.js"></script>
+    <script>
+        let win1 = 'http://127.0.0.1:5500/Module1/5.ConditionalStructure/Homework/4.GamePuzzle/img/1x1.jpghttp://127.0.0.1:5500/Module1/5.ConditionalStructure/Homework/4.GamePuzzle/img/2x1.jpghttp://127.0.0.1:5500/Module1/5.ConditionalStructure/Homework/4.GamePuzzle/img/3x1.jpghttp://127.0.0.1:5500/Module1/5.ConditionalStructure/Homework/4.GamePuzzle/img/4x1.jpghttp://127.0.0.1:5500/Module1/5.ConditionalStructure/Homework/4.GamePuzzle/img/5x1.jpg'
+        let win2 = 'http://127.0.0.1:5500/Module1/5.ConditionalStructure/Homework/4.GamePuzzle/img/1x2.jpghttp://127.0.0.1:5500/Module1/5.ConditionalStructure/Homework/4.GamePuzzle/img/2x2.jpghttp://127.0.0.1:5500/Module1/5.ConditionalStructure/Homework/4.GamePuzzle/img/3x2.jpghttp://127.0.0.1:5500/Module1/5.ConditionalStructure/Homework/4.GamePuzzle/img/4x2.jpghttp://127.0.0.1:5500/Module1/5.ConditionalStructure/Homework/4.GamePuzzle/img/5x2.jpg'
+        let win3 = 'http://127.0.0.1:5500/Module1/5.ConditionalStructure/Homework/4.GamePuzzle/img/1x3.jpghttp://127.0.0.1:5500/Module1/5.ConditionalStructure/Homework/4.GamePuzzle/img/2x3.jpghttp://127.0.0.1:5500/Module1/5.ConditionalStructure/Homework/4.GamePuzzle/img/3x3.jpghttp://127.0.0.1:5500/Module1/5.ConditionalStructure/Homework/4.GamePuzzle/img/4x3.jpghttp://127.0.0.1:5500/Module1/5.ConditionalStructure/Homework/4.GamePuzzle/img/5x3.jpg'
+
+        
+        function changeImage1() {
+            let random = Math.ceil(Math.random() * 3);
+            document.getElementById('img1').src = `img/1x${random}.jpg`;
+            
+            let check = document.getElementById('img1').src +
+                document.getElementById('img2').src +
+                document.getElementById('img3').src +
+                document.getElementById('img4').src +
+                document.getElementById('img5').src;
+            if (check == win1 || check == win2 || check == win3) {
+                document.getElementById('img1').classList.add('win');
+                document.getElementById('img2').classList.add('win');
+                document.getElementById('img3').classList.add('win');
+                document.getElementById('img4').classList.add('win');
+                document.getElementById('img5').classList.add('win');
+            }else {
+                document.getElementById('img1').classList.remove('win');
+                document.getElementById('img2').classList.remove('win');
+                document.getElementById('img3').classList.remove('win');
+                document.getElementById('img4').classList.remove('win');
+                document.getElementById('img5').classList.remove('win');
+            }
+        }
+        function changeImage2() {
+            let random = Math.ceil(Math.random() * 3);
+            document.getElementById('img2').src = `img/2x${random}.jpg`;
+            
+            let check = document.getElementById('img1').src +
+                document.getElementById('img2').src +
+                document.getElementById('img3').src +
+                document.getElementById('img4').src +
+                document.getElementById('img5').src;
+            if (check == win1 || check == win2 || check == win3) {
+                document.getElementById('img1').classList.add('win');
+                document.getElementById('img2').classList.add('win');
+                document.getElementById('img3').classList.add('win');
+                document.getElementById('img4').classList.add('win');
+                document.getElementById('img5').classList.add('win');
+            }else {
+                document.getElementById('img1').classList.remove('win');
+                document.getElementById('img2').classList.remove('win');
+                document.getElementById('img3').classList.remove('win');
+                document.getElementById('img4').classList.remove('win');
+                document.getElementById('img5').classList.remove('win');
+            }
+        }
+        function changeImage3() {
+            let random = Math.ceil(Math.random() * 3);
+            document.getElementById('img3').src = `img/3x${random}.jpg`;
+            
+            let check = document.getElementById('img1').src +
+                document.getElementById('img2').src +
+                document.getElementById('img3').src +
+                document.getElementById('img4').src +
+                document.getElementById('img5').src;
+            if (check == win1 || check == win2 || check == win3) {
+                document.getElementById('img1').classList.add('win');
+                document.getElementById('img2').classList.add('win');
+                document.getElementById('img3').classList.add('win');
+                document.getElementById('img4').classList.add('win');
+                document.getElementById('img5').classList.add('win');
+            }else {
+                document.getElementById('img1').classList.remove('win');
+                document.getElementById('img2').classList.remove('win');
+                document.getElementById('img3').classList.remove('win');
+                document.getElementById('img4').classList.remove('win');
+                document.getElementById('img5').classList.remove('win');
+            }
+        }
+        function changeImage4() {
+            let random = Math.ceil(Math.random() * 3);
+            document.getElementById('img4').src = `img/4x${random}.jpg`;
+            
+            let check = document.getElementById('img1').src +
+                document.getElementById('img2').src +
+                document.getElementById('img3').src +
+                document.getElementById('img4').src +
+                document.getElementById('img5').src;
+            if (check == win1 || check == win2 || check == win3) {
+                document.getElementById('img1').classList.add('win');
+                document.getElementById('img2').classList.add('win');
+                document.getElementById('img3').classList.add('win');
+                document.getElementById('img4').classList.add('win');
+                document.getElementById('img5').classList.add('win');
+            }else {
+                document.getElementById('img1').classList.remove('win');
+                document.getElementById('img2').classList.remove('win');
+                document.getElementById('img3').classList.remove('win');
+                document.getElementById('img4').classList.remove('win');
+                document.getElementById('img5').classList.remove('win');
+            }
+        }
+        function changeImage5() {
+            let random = Math.ceil(Math.random() * 3);
+            document.getElementById('img5').src = `img/5x${random}.jpg`;
+
+            let check = document.getElementById('img1').src +
+                document.getElementById('img2').src +
+                document.getElementById('img3').src +
+                document.getElementById('img4').src +
+                document.getElementById('img5').src;
+            if (check == win1 || check == win2 || check == win3) {
+                document.getElementById('img1').classList.add('win');
+                document.getElementById('img2').classList.add('win');
+                document.getElementById('img3').classList.add('win');
+                document.getElementById('img4').classList.add('win');
+                document.getElementById('img5').classList.add('win');
+            }else {
+                document.getElementById('img1').classList.remove('win');
+                document.getElementById('img2').classList.remove('win');
+                document.getElementById('img3').classList.remove('win');
+                document.getElementById('img4').classList.remove('win');
+                document.getElementById('img5').classList.remove('win');
+            }
+        }
+
+    </script>
 </body>
+
 </html>

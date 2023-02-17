@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,16 +8,13 @@
     <title>Good Fast Cheap</title>
     <link rel="stylesheet" href="index.css">
 </head>
+
 <body>
-    <div class="container">
-        <input type="checkbox" class="good" onchange="changed(this)">
-        <label for="good">Good</label>  <br>
-        <input type="checkbox" class="fast" onchange="changed(this)">
-        <label for="fast">Fast</label>  <br>
-        <input type="checkbox" class="cheap" onchange="changed(this)">
-        <label for="cheap">Cheap</label> 
-    </body>
-    </div>
+    <input type="checkbox" id="good" onchange="changeGood()">Good <br>
+    <input type="checkbox" id="fast" onchange="changeFast()">Fast <br>
+    <input type="checkbox" id="cheap" onchange="changeCheap()">Cheap
+</body>
 
 <script src="index.js"></script>
-</html> 
+
+</html>
