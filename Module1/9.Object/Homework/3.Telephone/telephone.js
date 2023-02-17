@@ -1,153 +1,119 @@
-function Mobile() {
+
+let Mobile = function (battery) {
+    this.battery = battery;
+    this.memoryWritting = "";
+    this.memorySent = "";
+    this.memoryInbox = "";
     this.message = "";
-    this.memoryMessageIsWritting = "";
-    this.memoryMessageInInbox = "";
-    this.memoryMessageSent = "";
-    this.setBattery = function (battery) {
-        if (battery > 100) {
-            this.battery = 100;
-        } else if (battery > 0) {
-            this.battery = battery;
+
+    this.checkStatusMobile = function () {
+        if (this.status) {
+            console.log('Điện thoại đang bật');
         } else {
-            this.battery = 0;
+            console.log('Điện thoại đang tắt');
         }
-    }
-    this.getBattery = function () {
-        return this.battery;
-    }
-    this.setMessage = function (message) {
-        this.message = message;
-    }
-    this.getMessage = function () {
-        return this.message;
-    }
-    this.sendMessage = function (message, mobile) {
-        mobile.setMessage(message);
+        if(this.battery>0){
+            this.battery--;
+        }else {
+            this.battery = 0;
+            console.log("Điện thoại hết pin. Hãy sạc!");
+        }
     }
     this.turnOn = function () {
-        this.status = "On";
+        this.status = true;
     }
-    this.turnOff = function () {
-        this.status = "Off";
+
+    this.turnOff = function (){
+        this.status = false;
+    }
+    this.setBattery = function(battery){
+        this.battery = battery;
+    }
+    this.chargeBattery = function () {                            //Không chạy được khi đưa theo đối tượng
+        console.log("sac pin............." + this.battery);
+            this.battery += 5;
+            var n = setTimeout(this.chargeBattery, 300);
+            if(this.battery == 100){
+                clearTimeout(n);
+                console.log("Day pin");
+            }
+    }
+
+    this.setMessage = function(message) {
+        this.message = message;
+    }
+    this.getMessage = function() {
+        if(this.battery>0){
+            this.battery--;
+        }else {
+            this.battery = 0;
+            console.log("Điện thoại hết pin. Hãy sạc!");
+        }
+        alert(this.message) ;
+    }
+    this.getMessageSent = function() {
+        this.memorySent += this.message + "<br>";
+        if(this.battery>0){
+            this.battery--;
+        }else {
+            this.battery = 0;
+            console.log("Điện thoại hết pin. Hãy sạc!");
+        }
+        alert(this.memorySent) ;
+    }
+    this.sendMessage = function(message, mobile) {
+        mobile.setBattery(message);
+        if(this.battery>0){
+            this.battery--;
+        }else {
+            this.battery = 0;
+            console.log("Điện thoại hết pin. Hãy sạc!");
+        }
+    }
+    this.getMessageInbox = function(mobile) {
+        this.memoryInbox += mobile.message + "<br>";
+        if(this.battery>0){
+        this.battery--;
+        }else {
+            this.battery = 0;
+            console.log("Điện thoại hết pin. Hãy sạc!");
+        }
+        alert(this.memoryInbox);
+    }
+ }
+
+let nokia = new Mobile(100);
+let iphone = new Mobile(100);
+
+document.getElementById('batteryNokia').innerHTML = nokia.battery;
+document.getElementById('batteryIphone').innerHTML = iphone.battery;
+
+nokia.setMessage('hello'); //không đưa được giá trị value vào document.getElementById('messageNokia').value;
+nokia.getMessage();
+nokia.sendMessage('hello',iphone);
+
+/**
+var x = 1;
+function rePlay(){
+    console.log("aaaaaaaaaaaaa");
+    var y = setTimeout(rePlay, 1000);
+    console.log("bbbbbbbbbbbbbbbbbbbbb");
+    if(x == 11){
+        clearTimeout(y);
     }
 }
-let nokia = new Mobile();
-let iphone = new Mobile();
+rePlay();
 
-//setBattery
+ */
 
-let batteryNokia = parseInt(prompt("Nhập pin cho điện thoại nokia"));
-nokia.setBattery(batteryNokia);
-document.getElementById('batteryNokia').innerText = nokia.getBattery();
-
-//ChargeBattery1
-
-let battery1 = document.getElementById('batteryNokia').innerText;
-function chargeBatteryNokia() {
-    document.getElementById('batteryNokia').innerHTML = battery1++;
-    let n = setTimeout(chargeBatteryNokia, 300);
-    if (document.getElementById('batteryNokia').innerText == 100) {
-        clearTimeout(n);
-        document.getElementById('statusNokia').value = "On";
-    }
-}
-
-//StatusMobile1
-
-if (nokia.getBattery() == 0) {
-    alert("Điện thoại Nokia hết pin! Đang tắt");
-    document.getElementById('statusNokia').value = "Off";
-} else {
-    document.getElementById('statusNokia').value = "On";
-    function sendMessageFromNokia() {
-        let messageNokia = document.getElementById('messageNokia').value;
-        nokia.sendMessage(messageNokia, iphone);
-        nokia.memoryMessageSent += (iphone.getMessage() + " ");
-        iphone.memoryMessageInInbox += (iphone.getMessage() + " ");
-        if (document.getElementById('batteryNokia').innerText > 0) {
-            document.getElementById('memoryNokiaSent').innerText = nokia.memoryMessageSent;
-            document.getElementById('memoryIphoneInbox').innerText = iphone.memoryMessageInInbox;
-            document.getElementById('batteryNokia').innerText -= 1;
-        } else {
-            alert("Điện thoại Nokia hết pin! Đang tắt");
-            document.getElementById('statusNokia').value = "Off";
-        }
-    }
-    function openMemoryMessageSentNokia() {
-        if (document.getElementById('batteryNokia').innerText > 0) {
-            alert(document.getElementById('memoryNokiaSent').innerText);
-            document.getElementById('batteryNokia').innerText -= 1;
-        } else {
-            alert("Điện thoại Nokia hết pin! Đang tắt");
-            document.getElementById('statusNokia').value = "Off";
-        }
-    }
-    function openMemoryMessageInboxNokia() {
-        if (document.getElementById('batteryNokia').innerText > 0) {
-            alert(document.getElementById('memoryNokiaInbox').innerText);
-            document.getElementById('batteryNokia').innerText -= 1;
-        } else {
-            alert("Điện thoại Nokia hết pin! Đang tắt");
-            document.getElementById('statusNokia').value = "Off";
-        }
-    }
-}
-
-//setBattery
-
-let batteryIphone = parseInt(prompt("Nhập pin cho điện thoại iphone"));
-iphone.setBattery(batteryIphone);
-document.getElementById('batteryIphone').innerText = iphone.getBattery();
-
-//ChargeBattery2
-
-let battery2 = document.getElementById('batteryIphone').innerText;
-function chargeBatteryIphone() {
-    document.getElementById('batteryIphone').innerHTML = battery2++;
-    let n = setTimeout(chargeBatteryIphone, 300);
-    if (document.getElementById('batteryIphone').innerText == 100) {
-        clearTimeout(n);
-        document.getElementById('statusIphone').value = "On";
-    }
-}
-
-//StatusMobile2
-
-if (iphone.getBattery() == 0) {
-    alert("Điện thoại Iphone hết pin! Đang tắt");
-    document.getElementById('statusIphone').value = "Off";
-} else {
-    document.getElementById('statusIphone').value = "On";
-    function sendMessageFromIphone() {
-        let messageIphone = document.getElementById('messageIphone').value;
-        iphone.sendMessage(messageIphone, nokia);
-        iphone.memoryMessageSent += (nokia.getMessage() + " ");
-        nokia.memoryMessageInInbox += (nokia.getMessage() + " ");
-        if (document.getElementById('batteryIphone').innerText > 0) {
-            document.getElementById('memoryIphoneSent').innerText = iphone.memoryMessageSent;
-            document.getElementById('memoryNokiaInbox').innerText = nokia.memoryMessageInInbox;
-            document.getElementById('batteryIphone').innerText -= 1;
-        } else {
-            alert("Điện thoại Iphone hết pin! Đang tắt");
-            document.getElementById('statusIphone').value = "Off";
-        }
-    }
-    function openMemoryMessageSentIphone() {
-        if (document.getElementById('batteryIphone').innerText > 0) {
-            alert(document.getElementById('memoryIphoneSent').innerText);
-            document.getElementById('batteryIphone').innerText -= 1;
-        } else {
-            alert("Điện thoại Iphone hết pin! Đang tắt");
-            document.getElementById('statusIphone').value = "Off";
-        }
-    }
-    function openMemoryMessageInboxIphone() {
-        if (document.getElementById('batteryIphone').innerText > 0) {
-            alert(document.getElementById('memoryIphoneInbox').innerText);
-            document.getElementById('batteryIphone').innerText -= 1;
-        } else {
-            alert("Điện thoại Iphone hết pin! Đang tắt");
-            document.getElementById('statusIphone').value = "Off";
-        }
-    }
-}
+// let iphone = new Mobile()
+// nokia.chargeBattery = function () {
+//     console.log("sac pin............." + nokia.battery);
+//         nokia.battery += 5;
+//         var n = setTimeout(nokia.chargeBattery, 300);
+//         if(nokia.battery == 100){
+//             clearTimeout(n);
+//             console.log("Day pin");
+//         }
+// }
+// nokia.chargeBattery();

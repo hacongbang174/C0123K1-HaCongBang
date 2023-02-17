@@ -18,19 +18,19 @@
         <tr>
             <td>Message</td>
             <td><input type="text" id="messageNokia"></td>
-            <td><input type="button" onclick="nokia.sendMessage()" value="Gửi"></td>
+            <td><input type="button" onclick="nokia.getMessage()" value="Gửi"></td>
         </tr>
         <tr>
             <td>Message Sent</td>
-            <td colspan="2" style="text-align: center;"><input type="button" onclick="" value="Mở"></td>
+            <td colspan="2" style="text-align: center;"><input type="button" onclick="nokia.getMessageSent()" value="Mở"></td>
         </tr>
         <tr>
             <td>Inbox</td>
-            <td colspan="2" style="text-align: center;"><input type="button" onclick="" value="Mở"></td>
+            <td colspan="2" style="text-align: center;"><input type="button" onclick="nokia.getMessageInbox()" value="Mở"></td>
         </tr>
         <tr>
             <td>Status</td>
-            <td colspan="2" style="text-align: center;"><input id="statusNokia" type="button" onclick=""
+            <td colspan="2" style="text-align: center;"><input id="statusNokia" type="button" onclick="nokia.checkStatusMobile()"
                     value="Check">
             </td>
         </tr>
@@ -50,19 +50,19 @@
         <tr>
             <td>Message</td>
             <td><input type="text" id="messageIphone"></td>
-            <td><input type="button" onclick="" value="Gửi"></td>
+            <td><input type="button" onclick="iphone.getMessage()" value="Gửi"></td>
         </tr>
         <tr>
             <td>Message Sent</td>
-            <td colspan="2" style="text-align: center;"><input type="button" onclick="" value="Mở"></td>
+            <td colspan="2" style="text-align: center;"><input type="button" onclick="iphone.getMemorySent()" value="Mở"></td>
         </tr>
         <tr>
             <td>Inbox</td>
-            <td colspan="2" style="text-align: center;"><input type="button" onclick="iphone.getMessage()" value="Mở"></td>
+            <td colspan="2" style="text-align: center;"><input type="button" onclick="iphone.getMemoryInbox()" value="Mở"></td>
         </tr>
         <tr>
             <td>Status</td>
-            <td colspan="2" style="text-align: center;"><input id="statusIphone" type="button" onclick=""
+            <td colspan="2" style="text-align: center;"><input id="statusIphone" type="button" onclick="iphone.checkStatusMobile()"
                     value="Check">
             </td>
         </tr>
@@ -73,7 +73,7 @@
         </tr>
     </table>
     
-    <script src="tele.js"></script>
+    <script src="telephone.js"></script>
 </body>
 
 </html>
