@@ -16,7 +16,7 @@
         </tr>
         <tr id="row2">
             <td><input type="text" id="name"></td>
-            <td><input id = "button" type="button" value="Add" onclick="add()"></td>
+            <td><input id="button" type="button" value="Add" onclick="add()"></td>
         </tr>
         <tr id="row3">
             <th colspan="4">Display All Product</th>
@@ -26,26 +26,27 @@
             <th><span id="numberProduct"></span></th>
         </tr>
     </table>
+    
     <script>
         let n = 0;
+        let table = document.getElementById('tableProduct');
+        let table_len = table.length;
         document.getElementById('numberProduct').innerHTML = `${n} Product`;
         function add() {
             let nameProduct = document.getElementById('name').value;
-            let table = document.getElementById('tableProduct');
-            let table_len = table.length;
             let rowproduct = `<tr id="row${table_len}">
-            <td><span id="nameProduct${table_len}">${nameProduct}</span></td>
+            <td><span id="name${table_len}">${nameProduct}</span></td>
             <td><input id = "button"  type="button" value="Edit" onclick = "edit(${table_len})"></td>
             <td><input id = "button"  type="button" value="Delete" onclick = "del(this)"></td>
             <td></td>
             </tr>`;
             table.insertRow(table_len).innerHTML = rowproduct;
             document.getElementById('name').value = "";
-            document.getElementById('numberProduct').innerHTML = `${n+1} Product`;
+            document.getElementById('numberProduct').innerHTML = `${n + 1} Product`;
             n++;
         }
         function edit(table_len) {
-            document.getElementById(`nameProduct${table_len}`).innerText = prompt("Nhập tên bạn muốn sửa đổi");
+            document.getElementById(`name${table_len}`).innerText = prompt("Nhập tên bạn muốn sửa đổi");
         }
         function del(r) {
             let i = r.parentNode.parentNode.rowIndex;
