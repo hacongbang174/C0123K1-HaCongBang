@@ -1,12 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>[*Bài tập] Ứng dụng quản lý sản phẩm sử dụng hàm</title>
+    <link rel="stylesheet" href="exp5.css">
 </head>
+
 <body>
-    
+    <table id="tableProduct" border="1">
+        <tr id="row1">
+            <th colspan="2">Add New Product</th>
+        </tr>
+        <tr id="row2">
+            <td><input type="text" id="name"></td>
+            <td><input id = "button" type="button" value="Add" onclick="add()"></td>
+        </tr>
+        <tr id="row3">
+            <th colspan="4">Display All Product</th>
+        </tr>
+        <tr id="row4">
+            <th colspan="3">Product Name</th>
+            <th><span id="numberProduct"></span></th>
+        </tr>
+    </table>
+    <script>
+        let n = 0;
+        function add() {
+            let nameProduct = document.getElementById('name').value;
+            let table = document.getElementById('tableProduct');
+            let table_len = table.length;
+            let rowproduct = `<tr id="row${table_len}">
+            <td><span id="nameProduct${table_len}">${nameProduct}</span></td>
+            <td><input id = "button"  type="button" value="Edit" onclick = "edit(${table_len})"></td>
+            <td><input id = "button"  type="button" value="Delete" onclick = "del(this)"></td>
+            <td></td>
+            </tr>`;
+            table.insertRow(table_len).innerHTML = rowproduct;
+            document.getElementById('name').value = "";
+            document.getElementById('numberProduct').innerHTML = `${n+1} Product`;
+            n++;
+        }
+        function edit(table_len) {
+            document.getElementById(`nameProduct${table_len}`).innerText = prompt("Nhập tên bạn muốn sửa đổi");
+        }
+        function del(r) {
+            let i = r.parentNode.parentNode.rowIndex;
+            document.getElementById('tableProduct').deleteRow(i);
+            n--;
+            document.getElementById('numberProduct').innerHTML = `${n} Product`;
+        }
+    </script>
 </body>
+
 </html>
