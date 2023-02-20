@@ -8,15 +8,15 @@ let Mobile = function (battery) {
 
     this.checkStatusMobile = function () {
         if (this.status) {
-            console.log('Điện thoại đang bật');
+            alert('Điện thoại đang bật');
         } else {
-            console.log('Điện thoại đang tắt');
+            alert('Điện thoại đang tắt');
         }
         if(this.battery>0){
             this.battery--;
         }else {
             this.battery = 0;
-            console.log("Điện thoại hết pin. Hãy sạc!");
+            alert("Điện thoại hết pin. Hãy sạc!");
         }
     }
     this.turnOn = function () {
@@ -30,12 +30,12 @@ let Mobile = function (battery) {
         this.battery = battery;
     }
     this.chargeBattery = function () {                            //Không chạy được khi đưa theo đối tượng
-        console.log("sac pin............." + this.battery);
+        alert("sac pin............." + this.battery);
             this.battery += 5;
             var n = setTimeout(this.chargeBattery, 300);
             if(this.battery == 100){
                 clearTimeout(n);
-                console.log("Day pin");
+                alert("Day pin");
             }
     }
 
@@ -47,7 +47,7 @@ let Mobile = function (battery) {
             this.battery--;
         }else {
             this.battery = 0;
-            console.log("Điện thoại hết pin. Hãy sạc!");
+            alert("Điện thoại hết pin. Hãy sạc!");
         }
         alert(this.message) ;
     }
@@ -57,7 +57,7 @@ let Mobile = function (battery) {
             this.battery--;
         }else {
             this.battery = 0;
-            console.log("Điện thoại hết pin. Hãy sạc!");
+            alert("Điện thoại hết pin. Hãy sạc!");
         }
         alert(this.memorySent) ;
     }
@@ -67,7 +67,7 @@ let Mobile = function (battery) {
             this.battery--;
         }else {
             this.battery = 0;
-            console.log("Điện thoại hết pin. Hãy sạc!");
+            alert("Điện thoại hết pin. Hãy sạc!");
         }
     }
     this.getMessageInbox = function(mobile) {
@@ -76,7 +76,7 @@ let Mobile = function (battery) {
         this.battery--;
         }else {
             this.battery = 0;
-            console.log("Điện thoại hết pin. Hãy sạc!");
+            alert("Điện thoại hết pin. Hãy sạc!");
         }
         alert(this.memoryInbox);
     }
