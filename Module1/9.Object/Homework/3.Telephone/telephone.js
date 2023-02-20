@@ -1,4 +1,5 @@
-function Mobile() {
+function Mobile(battery) {
+    this.battery = battery;
     this.message = "";
     this.memoryMessageIsWritting = "";
     this.memoryMessageInInbox = "";
@@ -31,13 +32,10 @@ function Mobile() {
         this.status = "Off";
     }
 }
-let nokia = new Mobile();
-let iphone = new Mobile();
+let nokia = new Mobile(20);
+let iphone = new Mobile(20);
 
 //setBattery
-
-let batteryNokia = parseInt(prompt("Nhập pin cho điện thoại nokia"));
-nokia.setBattery(batteryNokia);
 document.getElementById('batteryNokia').innerText = nokia.getBattery();
 
 //ChargeBattery1
@@ -68,7 +66,7 @@ if (nokia.getBattery() == 0) {
         if (document.getElementById('batteryNokia').innerText > 0) {
             document.getElementById('memoryNokiaSent').innerText = nokia.memoryMessageSent;
             document.getElementById('memoryIphoneInbox').innerText = iphone.memoryMessageInInbox;
-            document.getElementById('batteryNokia').innerText -= 1;
+            document.getElementById('batteryIphone').innerText -= 1;
         } else {
             alert("Điện thoại Nokia hết pin! Đang tắt");
             document.getElementById('statusNokia').value = "Off";
@@ -95,9 +93,6 @@ if (nokia.getBattery() == 0) {
 }
 
 //setBattery
-
-let batteryIphone = parseInt(prompt("Nhập pin cho điện thoại iphone"));
-iphone.setBattery(batteryIphone);
 document.getElementById('batteryIphone').innerText = iphone.getBattery();
 
 //ChargeBattery2
