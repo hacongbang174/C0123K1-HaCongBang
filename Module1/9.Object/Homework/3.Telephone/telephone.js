@@ -91,6 +91,9 @@ document.getElementById('batteryIphone').innerHTML = iphone.battery;
 nokia.setMessage('hello'); //không đưa được giá trị value vào document.getElementById('messageNokia').value;
 nokia.getMessage();
 nokia.sendMessage('hello',iphone);
+iphone.getMessageInbox();
+
+
 
 /**
 var x = 1;
@@ -117,3 +120,4 @@ rePlay();
 //         }
 // }
 // nokia.chargeBattery();
+
