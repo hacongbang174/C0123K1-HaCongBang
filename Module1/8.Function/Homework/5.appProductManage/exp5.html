@@ -10,7 +10,7 @@
 </head>
 
 <body>
-    <table id="tableProduct" border="1">
+    <table id="tableProduct" border="1" data-length = 4>
         <tr id="row1">
             <th colspan="2">Add New Product</th>
         </tr>
@@ -30,7 +30,8 @@
     <script>
         let n = 0;
         let table = document.getElementById('tableProduct');
-        let table_len = table.length;
+        // document.getElementById('tableProduct').setAttribute("data-length", 4);
+        let table_len = table.getAttribute('data-length');
         document.getElementById('numberProduct').innerHTML = `${n} Product`;
         function add() {
             let nameProduct = document.getElementById('name').value;
@@ -44,6 +45,7 @@
             document.getElementById('name').value = "";
             document.getElementById('numberProduct').innerHTML = `${n + 1} Product`;
             n++;
+            table_len++;
         }
         function edit(table_len) {
             document.getElementById(`name${table_len}`).innerText = prompt("Nhập tên bạn muốn sửa đổi");

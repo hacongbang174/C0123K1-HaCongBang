@@ -31,11 +31,14 @@ var hero = new Hero('doraemon.png', 10, 10, 150, 150, 50);
 function start() {
     if (hero.left < window.innerWidth - hero.width) {
         hero.moveRight();
-    }else if (hero.top < window.innerHeight - hero.height) {
+    }
+    if (hero.left > window.innerWidth - hero.width && hero.top < window.innerHeight - hero.height) {
         hero.moveDown();
-    } else if (hero.left > window.innerWidth - hero.width) {
+    }
+    if (hero.left > window.innerWidth - hero.width && hero.top > window.innerHeight - hero.height) {
         hero.moveLeft();
-    } else if (hero.top > window.innerHeight - hero.height) {
+    }
+    if (hero.top > window.innerHeight - hero.height && hero.left < window.innerWidth - hero.width) {
         hero.moveUP();
     };
     document.getElementById('game').innerHTML = hero.getHeroElement();
