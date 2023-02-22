@@ -23,7 +23,7 @@ for (let i = 0; i < matrix.length; i++) {
         }
     }
 }
-console.log(sum);
+console.log(`Tổng các số chẵn là ${sum}`);
 
 // Bài 01: Đếm các số lẻ trong ma trận
 let position = 0;
