@@ -1,0 +1,1 @@
+const BALL_ORIGIN = new Vector2(25, 25)

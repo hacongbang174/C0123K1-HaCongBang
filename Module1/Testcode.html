@@ -1,169 +1,163 @@
-<<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Test Code</title>
+    <title>TAKE MY OAK!</title>
 </head>
-<!--
 <body>
-    <form action="https://www.google.com.vn">
-        <fieldset>
-            <legend>Bảng tên</legend>
-            First name: <br>
-            <input type="text" name="firstname" value="Họ">
-            <br>
-            Last name: <br>
-            <input type="text" name="lastname" value="Tên">
-            <br><br>
-            <input type="submit" value="Submit">
-            <input type="reset" value="Reset">
-        </fieldset>
-    </form>
-    <br>
-    <form action="https://www.google.com.vn">
-        <input type="text" name="q"><br>
-        <input type="submit" value="submit">
-    </form>
-    <br>
-    <form action="https://www.google.com.vn">
-            <label for="text">Sign in:<br>
-            <input type="text" name="signin"></label><br>
-            <label for="passwword">Password: <br>
-            <input type="password" name="password"></label><br>
-            <input type="submit" value="Sign In">
-            <input type="submit" value="Sign Up">
-    </form>
-    <br>
-    <form action="https://www.google.com.vn">
-        <fieldset>
-            <legend>Coffee</legend><br>
-            <label for=""><input type="checkbox" name="hobby" value="coffeehouse">Coffee House</label><br>
-            <label for=""><input type="checkbox" name="hobby" value="coffeecat">Coffee Cat</label><br>
-            <label for=""><input type="checkbox" name="hobby" value="coffeedog">Coffee Dog</label><br>
-            <label for=""><input type="submit" value="Submit"></label>
-        </fieldset>
-    </form>
-    <br>
-    <form action="https://www.google.com.vn">
-        <fieldset>
-            <legend>Coffee</legend><br>
-            <label for=""><input type="radio" name="hobby" value="coffeehouse">Coffee House</label><br>
-            <label for=""><input type="radio" name="hobby" value="coffeecat">Coffee Cat</label><br>
-            <label for=""><input type="radio" name="hobby" value="coffeedog">Coffee Dog</label><br>
-            <input type="submit" value="Submit">
-        </fieldset>
-    </form>
-    <br>
-    <form action="https://www.google.com.vn">
-        <fieldset>
-            <legend>Coffee</legend><br>
-            <label for=""><input type="radio" name="hobby" value="coffeehouse">Coffee House</label><br>
-            <label for=""><input type="radio" name="hobby" value="coffeecat">Coffee Cat</label><br>
-            <label for=""><input type="radio" name="hobby" value="coffeedog">Coffee Dog</label><br>
-            <input type="reset" value="Reset">
-        </fieldset>
-    </form>
-    <br>
-    <form action="" method="post">
-        <button type="button">
-            <img src="http://codegym.vn/wp-content/uploads/2017/03/CodeGym-3-02-copy.jpg" alt="Codegym" width="200px">
-        </button>
-        <br>
-        <textarea name="thebutton" id="Thẻ Button" cols="50" rows="6">Thẻ button được sử dụng để hiển thị một nút. Bên trong thẻ button thì chúng ta có thể đưa các nội dung khác vào, chẳng hạn như là chuỗi hoặc hình ảnh. Đây cũng chính là sự khác biệt so với việc sử dụng thẻ input button, bởi vì bên trong input button thì chỉ có thể chứa text.</textarea>
-    </form>
-    <br>
-    <form action="" method="post">
-        <select name="city">
-            <option value="SG">Sài Gòn</option>
-            <option value="HN">Hà Nội</option>
-            <option value="Hue">Thừa Thiên Huế</option>
-            <option value="DN">Đà Nẵng</option>
-        </select>
-    </form>
-    <table border="1">
-        <tr>
-            <th>Tên</th>
-            <th>Tuổi</th>
-            <th>Công việc</th>
-        </tr>
-        <tr>
-            <td>Nguyễn Văn A</td>
-            <td>25 tuổi</td>
-            <td>Bác sĩ</td>
-        </tr>
-        <tr>
-            <td>Nguyễn Thị B</td>
-            <td>24 tuổi</td>
-            <td>Giáo viên</td>
-        </tr>
-        <tr>
-            <td colspan="3">Tổng:</td>
-        </tr>
-    </table>
+<center>
+    <canvas id="myCanvas" width="500" height="700" style="border: 1px black"></canvas>
+</center>
 </body>
--->
-
-<body>
-    <script>
-        /*
-        function createName(fname, lname) {
-            this.firstName = fname;
-            this.lastName = lname;
-        }
-        let myName = new createName("Vu", "Tong");
-        document.write(myName);
-        
-        let person = {
-            name: {
-                first: 'Bob',
-                last: 'Smith'
-            },
-            age: 32,
-            gender: 'male',
-            interests: ['music', 'skiing'],
-            bio: function () {
-                alert(this.name.first + ' ' + this.name.last + ' is ' + this.age + ' years old. He likes ' + this.interests[0] + ' and ' + this.interests[1] + '.');
-            },
-            greeting: function () {
-                alert("Hi! I'm " + this.name.first + '.');
-            }
-        };
-        let myDataName = 'height';
-        let myDataValue = '1.75m';
-        person[myDataName] = myDataValue;
-        console.log(person.height) 
-
-        function Mobile() {
-            this.message = "";
-            this.setMessage = function(message) {
-                this.message = message;
-            }
-            this.getMessage = function() {
-                return this.message;
-            }
-            this.sendMessage = function(message, mobile) {
-                mobile.setMessage(message);
-            }
-        }
-        let nokia = new Mobile();
-        let iphone = new Mobile();
-        nokia.sendMessage("hello",iphone);
-        let mess = iphone.getMessage()
-        document.write(mess); */
-        let x = 1;
-            function chargeBatteryNokia() {
-                document.getElementById('batteryNokia').innerHTML = x++ ;
-            }
-            let y = setInterval(chargeBatteryNokia,100);
-            if (y == 101) {
-                clearInterval(y);
-            }
-    </script>
-    <input type="button" value="" onclick="chargeBatteryNokia()">
-    <p id = "batteryNokia"></p>
-</body>
-
 </html>
+<script>
+    let ctx = document.getElementById('myCanvas').getContext('2d')
+    let game = "start";
+    let scrat = new Character(200, 550, 100, 100);
+    let oak = new Obstacles(100, 100, 70, 70);
+    oak.randomLocation();
+    let female = new Obstacles(100, 100, 100, 100);
+    female.randomLocation();
+
+    function createBackGround() {
+        let backGroundImg = new Image();
+        backGroundImg.src = 'background.jpg';
+        ctx.beginPath();
+        ctx.drawImage(backGroundImg, 0, 0, 500, 700)
+    }
+    function Character(x, y, width, height) {
+        this.x = x;
+        this.y = y;
+        this.width = width;
+        this.height = height;
+        this.score = 0;
+        this.moveLeft = function () {
+            if (this.x > 50) {
+                this.x = this.x - 60;
+            }
+        }
+        this.moveRight = function () {
+            if (this.x < 350) {
+                this.x = this.x + 60;
+            }
+        }
+        this.checkPoint = function () {
+            if (
+                (scrat.y + 70 == oak.y + 100) &&
+                (scrat.x >= oak.x) &&
+                (scrat.x <= oak.x + 100)) {
+                this.score++;
+                oak.randomLocation();
+            }
+            if (
+                (oak.y + 100 == scrat.y + 70) &&
+                (scrat.x + 100 <= oak.x + 100) &&
+                (scrat.x + 100 >= oak.x)
+            ) {
+                this.score++;
+                oak.randomLocation();
+            }
+            if (
+                (scrat.y + 30 == female.y + 100) &&
+                (scrat.x >= female.x) &&
+                (scrat.x <= female.x + 100)) {
+                alert('SHE STOLE YOUR OAK!!! YOUR SCORE IS: ' + this.score)
+                location.reload();
+            }
+            if (
+                (female.y + 100 == scrat.y + 30) &&
+                (scrat.x + 100 <= female.x + 100) &&
+                (scrat.x + 100 >= female.x)
+            ) {
+                alert('SHE STOLE YOUR OAK!!! YOUR SCORE IS: ' + this.score)
+                location.reload();
+            }
+        }
+        this.drawScrat = function () {
+            let scratImg = new Image();
+            this.checkPoint();
+            scratImg.src = 'scrat1.png';
+            ctx.beginPath();
+            ctx.drawImage(scratImg, this.x, this.y, this.width, this.height);
+            ctx.font = "50px Arial"
+            ctx.fillText(this.score, 430, 60);
+        }
+    }
+    function Obstacles(x, y, width, height) {
+        this.x = x;
+        this.y = y;
+        this.width = width;
+        this.height = height;
+        this.dropDown = function () {
+            this.y += 5;
+        }
+        this.randomLocation = function () {
+            this.y = 0;
+            this.x = Math.random() * 430;
+        }
+        this.drawOak = function () {
+            let oakImg = new Image();
+            oakImg.src = 'oak.png';
+            ctx.beginPath();
+            ctx.drawImage(oakImg, this.x, this.y, this.width, this.height)
+            if (this.y + 100 == 700) {
+                this.randomLocation();
+            }
+        }
+        this.drawFemale = function () {
+            let femaleImg = new Image();
+            femaleImg.src = 'female.png';
+            ctx.beginPath();
+            ctx.drawImage(femaleImg, this.x, this.y, this.width, this.height)
+            if (this.y + 100 == 700) {
+                this.randomLocation();
+            }
+        }
+    }
+
+    function moveOak() {
+        ctx.clearRect(0, 0, 500, 700);
+        createBackGround();
+        if (game == "start") {
+            ctx.beginPath();
+            ctx.font = "60px Arial";
+            ctx.fillText('Press',170,300);
+            ctx.fillText('BACKSPACE',70,370);
+            ctx.fillStyle = 'yellow';
+            ctx.strokeText('Press',170,300);
+            ctx.strokeText('BACKSPACE',70,370);
+        }
+        if (game == "play") {
+            scrat.drawScrat()
+            oak.drawOak();
+            female.drawFemale();
+        }
+    }
+    function oakDrop() {
+        oak.dropDown();
+        female.dropDown();
+        moveOak();
+        setTimeout(oakDrop, 40 / (scrat.score + 1));
+    }
+    oakDrop();
+
+    function pressKey(event) {
+        switch (event.which) {
+            case 37:
+                scrat.moveLeft();
+                moveOak();
+                break;
+            case 39:
+                scrat.moveRight();
+                moveOak();
+                break;
+            case 32:
+                game = "play";
+                break;
+        }
+    }
+    function play() {
+        window.addEventListener('keydown', pressKey)
+    }
+    play();
+</script>
