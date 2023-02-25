@@ -1,18 +1,4 @@
-//VECTOR2
 
-function Vector2(x, y) {
-    this.x = typeof x !== 'undefined' ? x : 0;
-    this.y = typeof y !== 'undefined' ? y : 0;
-}
-
-//BUTTONSTATE
-
-function ButtonState() {
-    this.down = false;
-    this.pressed = false;
-}
-
-//MOUSE
 function handleMouseMove(evt) {
     let x = evt.pageX;
     let y = evt.pageY;
