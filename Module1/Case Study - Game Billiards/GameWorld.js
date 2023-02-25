@@ -1,24 +1,46 @@
 const DELTA = 1 / 100;
 
 function GameWorld() {
-    this.balls = [
-        [new Vector2(1022, 413), COLOR.YELLOW],
-        [new Vector2(1056, 393), COLOR.YELLOW],
-        [new Vector2(1056, 433), COLOR.RED],
-        [new Vector2(1090, 374), COLOR.RED],
-        [new Vector2(1090, 413), COLOR.BLACK],
-        [new Vector2(1090, 452), COLOR.YELLOW],
-        [new Vector2(1126, 354), COLOR.YELLOW],
-        [new Vector2(1126, 393), COLOR.RED],
-        [new Vector2(1126, 433), COLOR.YELLOW],
-        [new Vector2(1126, 472), COLOR.RED],
-        [new Vector2(1162, 355), COLOR.RED],
-        [new Vector2(1162, 374), COLOR.RED],
-        [new Vector2(1162, 413), COLOR.YELLOW],
-        [new Vector2(1162, 452), COLOR.RED],
-        [new Vector2(1162, 491), COLOR.YELLOW],
-        [new Vector2(413, 413), COLOR.WHITE]
-    ].map(params => new Ball(params[0], params[1]));
+    this.redBalls = [
+        new Ball(new Vector2(1056,433),Color.red),//3
+        new Ball(new Vector2(1090,374),Color.red),//4
+        new Ball(new Vector2(1126,393),Color.red),//8
+        new Ball(new Vector2(1126,472),Color.red),//10;
+        new Ball(new Vector2(1162,335),Color.red),//11
+        new Ball(new Vector2(1162,374),Color.red),//12
+        new Ball(new Vector2(1162,452),Color.red)//14
+        ]
+    
+        this.yellowBalls = [
+        new Ball(new Vector2(1022,413),Color.yellow),//1
+        new Ball(new Vector2(1056,393),Color.yellow),//2
+        new Ball(new Vector2(1090,452),Color.yellow),//6
+        new Ball(new Vector2(1126,354),Color.yellow),//7
+        new Ball(new Vector2(1126,433),Color.yellow),//9
+        new Ball(new Vector2(1162,413),Color.yellow),//13
+        new Ball(new Vector2(1162,491),Color.yellow)//15
+        ];
+    
+        this.whiteBall = new Ball(new Vector2(413,413),Color.white);
+        this.blackBall = new Ball(new Vector2(1090,413),Color.black);
+    
+        this.balls = [
+        this.yellowBalls[0],
+        this.yellowBalls[1],
+        this.redBalls[0],
+        this.redBalls[1],
+        this.blackBall,
+        this.yellowBalls[2],
+        this.yellowBalls[3],
+        this.redBalls[2],
+        this.yellowBalls[4],
+        this.redBalls[3],
+        this.redBalls[4],
+        this.redBalls[5],
+        this.yellowBalls[5],
+        this.redBalls[6],
+        this.yellowBalls[6],
+        this.whiteBall]
 
     this.whiteBall = this.balls[this.balls.length - 1];
     this.stick = new Stick(
