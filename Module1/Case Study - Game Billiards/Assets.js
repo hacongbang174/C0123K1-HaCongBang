@@ -28,7 +28,7 @@ function loadAssets(callback) {
     sprites.stick = loadSprite('spr_stick.png');
     sprites.whiteBall = loadSprite('spr_ball2.png');
     sprites.redBall = loadSprite('spr_redBall2.png');
-    sprites.yelloweBall = loadSprite('spr_yellowBall2.png');
+    sprites.yellowBall = loadSprite('spr_yellowBall2.png');
     sprites.blackBall = loadSprite('spr_blackBall2.png');
 
 
@@ -39,17 +39,11 @@ function getBallsSptiteByColor(color) {
     switch (color) {
         case COLOR.RED:
             return sprites.redBall;
-            break;
         case COLOR.YELLOW:
             return sprites.yellowBall;
-            break;
         case COLOR.BLACK:
             return sprites.blackBall;
-            break;
         case COLOR.WHITE:
             return sprites.whiteBall;
-            break;
-        default:
-            break;
     }
 }

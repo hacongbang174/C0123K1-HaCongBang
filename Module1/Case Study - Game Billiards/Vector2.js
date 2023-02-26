@@ -9,7 +9,6 @@ Vector2.prototype.copy = function() {
 Vector2.prototype.add = function(vector) {
     new Vector2(this.x + vector.x,  this.y + vector.y);
 }
-
 Vector2.prototype.addTo = function(vector) {
     this.x += vector.x;
     this.y += vector.y;
