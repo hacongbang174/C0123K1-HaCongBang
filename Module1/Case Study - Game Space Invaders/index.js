@@ -1,9 +1,9 @@
-
+const scoreEl = document.getElementById('score');
 const canvas = document.querySelector('canvas');
 const ctx = canvas.getContext('2d');
 
-canvas.width = innerWidth;
-canvas.height = innerHeight;
+canvas.width = 1024;
+canvas.height = 576;
 
 let Player = function () {
 
@@ -22,10 +22,11 @@ let Player = function () {
         };
     }
     this.rotation = 0;
+    this.opacity = 1;
 
     this.draw = function () {
         ctx.save();
-
+        ctx.globalAlpha = this.opacity
         ctx.translate(
             +player.position.x + player.width / 2,
             +player.position.y + player.height / 2
@@ -77,6 +78,36 @@ let Projectile = function ({ position, velocity }) {
 
 }
 
+let Particle = function ({ position, velocity, radius, color, fades }) {
+    this.position = position;
+    this.velocity = velocity;
+    this.radius = radius;
+    this.color = color;
+    this.opacity = 1;
+    this.fades = fades;
+
+    this.draw = function () {
+        ctx.save();
+        ctx.globalApha = this.opacity
+        ctx.beginPath();
+        ctx.arc(this.position.x, this.position.y, this.radius, 0, Math.PI * 2);
+        ctx.fillStyle = this.color;
+        ctx.fill();
+        ctx.stroke();
+        ctx.restore();
+    }
+    this.update = function () {
+        this.draw();
+        this.position.x += this.velocity.x;
+        this.position.y += this.velocity.y;
+        if(this.fades) {
+            this.opacity -= 0.01;
+        }
+        
+    }
+
+}
+
 let Invader = function (position) {
 
     this.velocity = { x: 0, y: 0 };
@@ -110,10 +141,10 @@ let Invader = function (position) {
             this.position.y += velocity.y;
         }
     }
-    this.shoot = function(invaderProjectile) {
+    this.shoot = function (invaderProjectile) {
         invaderProjectile.push(new InvaderProjectile({
-            position: {x: this.position.x + this.width/2, y: this.position.y + this.height},
-            velocity: {x: 0, y: 5}
+            position: { x: this.position.x + this.width / 2, y: this.position.y + this.height },
+            velocity: { x: 0, y: 5 }
         }))
     }
 }
@@ -126,10 +157,10 @@ let InvaderProjectile = function ({ position, velocity }) {
 
     this.draw = function () {
         ctx.fillStyle = 'white';
-        ctx.fillRect(this.position.x, this.position.y , this.width, this.height);
+        ctx.fillRect(this.position.x, this.position.y, this.width, this.height);
     }
     this.update = function () {
-        this.draw();    
+        this.draw();
         this.position.x += this.velocity.x;
         this.position.y += this.velocity.y;
     }
@@ -164,6 +195,12 @@ let player = new Player();
 let projectiles = [];
 let grids = [];
 let invaderProjectiles = [];
+let particles = [];
+let game = {
+    over: false,
+    active: true
+}
+let score = 0;
 
 let ButtonState = {
     BUTTON_LEFT: {
@@ -184,11 +221,55 @@ let ButtonState = {
 }
 let frames = 0;
 let randomInterval = Math.floor(Math.random() * 500) + 500;
+
+for (let i = 0; i < 100; i++) {
+    particles.push(
+        new Particle({
+        position: {x: Math.random() * canvas.width, y: Math.random() * canvas.height },
+        velocity: {x: 0, y: 0.3},
+        radius: Math.random()*3,     
+        color: 'white'
+    })
+    )
+}
+
+let createParticles = function({object, color, fades}) {
+    for (let i = 0; i < 15; i++) {
+        particles.push(
+            new Particle({
+            position: {x: object.position.x + object.width / 2, y: object.position.y + object.height / 2 },
+            velocity: {x: (Math.random() - 0.5) *2, y: (Math.random() - 0.5) *2 },
+            radius: Math.random()*3,     
+            color: color || '#BAA0DE',
+            fades
+        })
+        )
+    }
+}
 let animate = function () {
+    if (!game.active) {
+        return;
+    }
     requestAnimationFrame(animate);
     ctx.fillStyle = 'black';
     ctx.fillRect(0, 0, canvas.width, canvas.height);
     player.update();
+    particles.forEach((particle,i) => {
+
+        if (particle.position.y - particle.radius >= canvas.height){
+            particle.position.x = Math.random() * canvas.width;
+            particle.position.y = - particle.radius;
+        }
+        if(particle.opacity <=0) {
+            setTimeout(() => {
+                particles.splice(i,1);
+            }, 0);
+        }else {
+            particle.update();
+        }
+    })
+
+    // Tạo đạn bắn
     projectiles.forEach((projectile, index) => {
         if (projectile.position.y + projectile.radius <= 0) {
             setTimeout(() => {
@@ -198,13 +279,35 @@ let animate = function () {
             projectile.update();
         }
     });
-    invaderProjectiles.forEach((invaderProjectile) => {
-        invaderProjectile.update();
+    invaderProjectiles.forEach((invaderProjectile, index) => {
+        if (invaderProjectile.position.y + invaderProjectile.height >= canvas.height) {
+            setTimeout(() => {
+                invaderProjectiles.splice(index, 1);
+            }, 0);
+        } else {
+            invaderProjectile.update();
+        }
+        if (
+            invaderProjectile.position.y + invaderProjectile.height >= player.position.y &&
+            invaderProjectile.position.y + invaderProjectile.height <= player.position.y + player.height &&
+            invaderProjectile.position.x + invaderProjectile.width >= player.position.x &&
+            invaderProjectile.position.x + invaderProjectile.width <= player.position.x + player.width
+        ) {
+            setTimeout(() => {
+                invaderProjectiles.splice(index, 1)
+                player.opacity = 0
+                game.over = true;
+            }, 0);
+            setTimeout(() => {
+                game.active = false;
+            }, 2000);
+            createParticles({object: player, color: 'white', fades: true});
+        }
     })
 
     grids.forEach((grid, gridIndex) => {
         grid.update();
-        if(frames % 100 == 0 && grid.invader.length > 0) {
+        if (frames % 100 == 0 && grid.invader.length > 0) {
             grid.invader[Math.floor(Math.random() * grid.invader.length)].shoot(invaderProjectiles);
         }
         grid.invader.forEach((invader, i) => {
@@ -216,19 +319,27 @@ let animate = function () {
                     projectile.position.x + projectile.radius >= invader.position.x &&
                     projectile.position.x - projectile.radius <= invader.position.x + invader.width
                 ) {
+                    
                     setTimeout(() => {
                         let invaderFound = grid.invader.find((invader2) => invader2 === invader);
                         let projectileFound = projectiles.find((projectile2) => projectile2 === projectile);
+
+                        
                         if (invaderFound && projectileFound) {
+                            score += 100;
+                            scoreEl.innerHTML = score;
                             grid.invader.splice(i, 1);
                             projectiles.splice(j, 1);
-                            if(grid.invader.length > 0) {
+ 
+                            createParticles({object: invader, fades: true});
+
+                            if (grid.invader.length > 0) {
                                 let firstInvader = grid.invader[0];
                                 let lastInvader = grid.invader[grid.invader.length - 1];
                                 grid.width = lastInvader.position.x - firstInvader.position.x + lastInvader.width;
                                 grid.position.x = firstInvader.position.x;
-                            }else {
-                                grids.splice(gridIndex,1);
+                            } else {
+                                grids.splice(gridIndex, 1);
                             }
                         }
                     }, 0)
@@ -265,6 +376,11 @@ let animate = function () {
 animate();
 
 addEventListener('keydown', (evt) => {
+    if(game.over){ 
+        alert('GAME OVER!');
+        return;
+    }
+
     switch (evt.keyCode) {
         case 37:
             console.log('left');
@@ -293,6 +409,10 @@ addEventListener('keydown', (evt) => {
 })
 
 addEventListener('keyup', (evt) => {
+    if(game.over){ 
+        alert('GAME OVER!');
+        return;
+    }
     switch (evt.keyCode) {
         case 37:
             console.log('left');
@@ -314,3 +434,8 @@ addEventListener('keyup', (evt) => {
             break;
     }
 })
+
+
+// function resetGame() {
+    
+// }
