@@ -3,7 +3,8 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: black;
+    background-color: black;    
+
 }
 p {
     font-family: sans-serif;
@@ -15,9 +16,55 @@ p {
     top: 10px;
     margin: 0;
 }
-.button {
+#start {
+    color: white;
     font-family: sans-serif;
-    font-size: 28px;
+    font-size: 20px;
     position: absolute;
-    right: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    right: 47%;
+    top: 75%;
+    width: 117px;
+    height: 40px;
+    background-image: url('./assets/image/button.png');
+    border-radius: 15px;
+}
+#restart {
+    color: white;
+    font-family: sans-serif;
+    font-size: 20px;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    right: 47%;
+    top: 75%;
+    width: 117px;
+    height: 40px;
+    background-image: url('./assets/image/button.png');
+    border-radius: 15px;
+}
+#text {
+    font-family: sans-serif;
+    font-size: 80px;
+    position: absolute;
+    z-index: 10;
+    text-shadow: 5px 5px 10px;
+    color: beige;
+    left: 440px;
+    top: 100px;
+    margin: 0;
+}
+#textScore {
+    font-family: sans-serif;
+    font-size: 60px;
+    position: relative;
+    z-index: 10;
+    text-shadow: 5px 5px 10px;
+    color: beige;
+    left: 450px;
+    top: 200px;
+    margin: 0;  
 }

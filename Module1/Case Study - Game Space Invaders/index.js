@@ -1,9 +1,14 @@
-const scoreEl = document.getElementById('score');
+const scoreEl = document.getElementById('scoreEl');
+const nameEl = document.getElementById('nameEl');
+const text = document.getElementById('text');
+const textScore = document.getElementById('textScore');
+const buttonStart = document.getElementById('classButton1');
+const buttonRestart = document.getElementById('classButton2');
 const canvas = document.querySelector('canvas');
 const ctx = canvas.getContext('2d');
 
-canvas.width = 1024;
-canvas.height = 576;
+canvas.width = 1366;
+canvas.height = 768;
 
 let Player = function () {
 
@@ -21,6 +26,7 @@ let Player = function () {
             y: canvas.height - this.height - 20
         };
     }
+
     this.rotation = 0;
     this.opacity = 1;
 
@@ -100,10 +106,10 @@ let Particle = function ({ position, velocity, radius, color, fades }) {
         this.draw();
         this.position.x += this.velocity.x;
         this.position.y += this.velocity.y;
-        if(this.fades) {
+        if (this.fades) {
             this.opacity -= 0.01;
         }
-        
+
     }
 
 }
@@ -191,7 +197,32 @@ let Grid = function () {
     }
 }
 
+let BackgroundGameStart = function () {
+    let image = new Image();
+    image.src = "./assets/image/startScreenBackground.png";
+    image.onload = () => {
+        this.image = image;
+        this.width = canvas.width;
+        this.height = canvas.height;
+        this.position = { x: 0, y: 0}
+    }
+    this.draw = function () {
+        ctx.drawImage(
+            this.image,
+            this.position.x,
+            this.position.y,
+            this.width,
+            this.height
+        );
+    }
+    this.update = function () {
+        this.draw();
+    }
+}
+
+
 let player = new Player();
+let backgroundGameStart = new BackgroundGameStart();
 let projectiles = [];
 let grids = [];
 let invaderProjectiles = [];
@@ -200,7 +231,15 @@ let game = {
     over: false,
     active: true
 }
+let statusGame = false;
 let score = 0;
+let sound = true;
+let soundBackgroud = new Audio('./assets/audio/backgroundMusic.wav');
+let soundShoot = new Audio('./assets/audio/shoot.wav');
+let soundEnemyShoot = new Audio('./assets/audio/enemyShoot.wav');
+let soundGameOver = new Audio('./assets/audio/gameOver.mp3');
+let soundScore = new Audio('./assets/audio/bonus.mp3');
+let soundStart = new Audio('./assets/audio/start.mp3');
 
 let ButtonState = {
     BUTTON_LEFT: {
@@ -225,46 +264,61 @@ let randomInterval = Math.floor(Math.random() * 500) + 500;
 for (let i = 0; i < 100; i++) {
     particles.push(
         new Particle({
-        position: {x: Math.random() * canvas.width, y: Math.random() * canvas.height },
-        velocity: {x: 0, y: 0.3},
-        radius: Math.random()*3,     
-        color: 'white'
-    })
+            position: { x: Math.random() * canvas.width, y: Math.random() * canvas.height },
+            velocity: { x: 0, y: 0.3 },
+            radius: Math.random() * 3,
+            color: 'white'
+        })
     )
 }
 
-let createParticles = function({object, color, fades}) {
+let createParticles = function ({ object, color, fades }) {
     for (let i = 0; i < 15; i++) {
         particles.push(
             new Particle({
-            position: {x: object.position.x + object.width / 2, y: object.position.y + object.height / 2 },
-            velocity: {x: (Math.random() - 0.5) *2, y: (Math.random() - 0.5) *2 },
-            radius: Math.random()*3,     
-            color: color || '#BAA0DE',
-            fades
-        })
+                position: { x: object.position.x + object.width / 2, y: object.position.y + object.height / 2 },
+                velocity: { x: (Math.random() - 0.5) * 2, y: (Math.random() - 0.5) * 2 },
+                radius: Math.random() * 3,
+                color: color || '#BAA0DE',
+                fades
+            })
         )
     }
 }
+
+
 let animate = function () {
+
+    soundBackgroud.play();
+    if (!sound) {
+        soundBackgroud.pause();
+        soundShoot.pause();
+        soundEnemyShoot.pause();
+        soundScore.pause();
+    }
     if (!game.active) {
+        statusGame = false;
+        soundGameOver.pause();
+        textScore.innerHTML = `GAME OVER! <br><br> Your score is: ${score}`;
+        buttonStart.hidden = true;
+        buttonRestart.hidden = false;
         return;
     }
     requestAnimationFrame(animate);
     ctx.fillStyle = 'black';
     ctx.fillRect(0, 0, canvas.width, canvas.height);
     player.update();
-    particles.forEach((particle,i) => {
+    particles.forEach((particle, i) => {
 
-        if (particle.position.y - particle.radius >= canvas.height){
+        if (particle.position.y - particle.radius >= canvas.height) {
             particle.position.x = Math.random() * canvas.width;
             particle.position.y = - particle.radius;
         }
-        if(particle.opacity <=0) {
+        if (particle.opacity <= 0) {
             setTimeout(() => {
-                particles.splice(i,1);
+                particles.splice(i, 1);
             }, 0);
-        }else {
+        } else {
             particle.update();
         }
     })
@@ -297,11 +351,13 @@ let animate = function () {
                 invaderProjectiles.splice(index, 1)
                 player.opacity = 0
                 game.over = true;
+                sound = false;
             }, 0);
             setTimeout(() => {
                 game.active = false;
             }, 2000);
-            createParticles({object: player, color: 'white', fades: true});
+
+            createParticles({ object: player, color: 'white', fades: true });
         }
     })
 
@@ -319,19 +375,20 @@ let animate = function () {
                     projectile.position.x + projectile.radius >= invader.position.x &&
                     projectile.position.x - projectile.radius <= invader.position.x + invader.width
                 ) {
-                    
+
                     setTimeout(() => {
                         let invaderFound = grid.invader.find((invader2) => invader2 === invader);
                         let projectileFound = projectiles.find((projectile2) => projectile2 === projectile);
 
-                        
+
                         if (invaderFound && projectileFound) {
                             score += 100;
                             scoreEl.innerHTML = score;
+                            soundEnemyShoot.play();
                             grid.invader.splice(i, 1);
                             projectiles.splice(j, 1);
- 
-                            createParticles({object: invader, fades: true});
+
+                            createParticles({ object: invader, fades: true });
 
                             if (grid.invader.length > 0) {
                                 let firstInvader = grid.invader[0];
@@ -372,34 +429,38 @@ let animate = function () {
         frames = 0;
     }
     frames++;
-}
-animate();
+
+};
+// animate();
+let animateStart = function () {
+    requestAnimationFrame(animateStart);
+    ctx.fillStyle = 'black';
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    backgroundGameStart.update();
+
+};
 
 addEventListener('keydown', (evt) => {
-    if(game.over){ 
-        alert('GAME OVER!');
+    if (game.over) {
+        soundGameOver.play();
         return;
     }
 
     switch (evt.keyCode) {
         case 37:
-            console.log('left');
             ButtonState.BUTTON_LEFT.pressed = true;
             break;
         case 39:
-            console.log('right');
             ButtonState.BUTTON_RIGHT.pressed = true;
             break;
         case 38:
-            console.log('down');
             ButtonState.BUTTON_DOWN.pressed = true;
             break;
         case 40:
-            console.log('up');
             ButtonState.BUTTON_UP.pressed = true;
             break;
         case 32:
-            console.log('space');
+            soundShoot.play();
             projectiles.push(new Projectile({
                 position: { x: player.position.x, y: player.position.y },
                 velocity: { x: 0, y: -10 }
@@ -409,25 +470,21 @@ addEventListener('keydown', (evt) => {
 })
 
 addEventListener('keyup', (evt) => {
-    if(game.over){ 
-        alert('GAME OVER!');
+    if (game.over) {
+        soundGameOver.play();
         return;
     }
     switch (evt.keyCode) {
         case 37:
-            console.log('left');
             ButtonState.BUTTON_LEFT.pressed = false;
             break;
         case 39:
-            console.log('right');
             ButtonState.BUTTON_RIGHT.pressed = false;
             break;
         case 38:
-            console.log('down');
             ButtonState.BUTTON_DOWN.pressed = false;
             break;
         case 40:
-            console.log('up');
             ButtonState.BUTTON_UP.pressed = false;
             break;
         case 32:
@@ -436,6 +493,40 @@ addEventListener('keyup', (evt) => {
 })
 
 
-// function resetGame() {
-    
+if (statusGame == false) {
+    nameEl.hidden = true;
+    scoreEl.hidden = true;
+    buttonStart.hidden = false;
+    buttonRestart.hidden = true;
+    animateStart();
+}
+
+function startGame() {
+    statusGame = true;
+    if (statusGame) {
+        nameEl.hidden = false;
+        scoreEl.hidden = false;
+        text.hidden = true;
+        buttonStart.hidden = true;
+        buttonRestart.hidden = true;
+        soundStart.play();
+        animate();
+    }
+}
+
+// if (statusGame) {
+//     animateStart();
 // }
+
+function restartGame() {
+    statusGame = false;
+    nameEl.hidden = true;
+    scoreEl.hidden = true;
+    textScore.hidden = true;
+    text.hidden = false;
+    buttonStart.hidden = false;
+    buttonRestart.hidden = true;
+}
+
+
+
