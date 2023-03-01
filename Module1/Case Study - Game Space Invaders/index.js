@@ -197,32 +197,9 @@ let Grid = function () {
     }
 }
 
-let BackgroundGameStart = function () {
-    let image = new Image();
-    image.src = "./assets/image/startScreenBackground.png";
-    image.onload = () => {
-        this.image = image;
-        this.width = canvas.width;
-        this.height = canvas.height;
-        this.position = { x: 0, y: 0}
-    }
-    this.draw = function () {
-        ctx.drawImage(
-            this.image,
-            this.position.x,
-            this.position.y,
-            this.width,
-            this.height
-        );
-    }
-    this.update = function () {
-        this.draw();
-    }
-}
 
 
 let player = new Player();
-let backgroundGameStart = new BackgroundGameStart();
 let projectiles = [];
 let grids = [];
 let invaderProjectiles = [];
@@ -240,7 +217,6 @@ let soundEnemyShoot = new Audio('./assets/audio/enemyShoot.wav');
 let soundGameOver = new Audio('./assets/audio/gameOver.mp3');
 let soundScore = new Audio('./assets/audio/bonus.mp3');
 let soundStart = new Audio('./assets/audio/start.mp3');
-
 let ButtonState = {
     BUTTON_LEFT: {
         pressed: false
@@ -286,6 +262,14 @@ let createParticles = function ({ object, color, fades }) {
     }
 }
 
+let animateStart = function () {
+    requestAnimationFrame(animateStart);
+    ctx.fillStyle = 'black';
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    let image = new Image();
+    image.src = "./assets/image/startScreenBackground.png";
+    ctx.drawImage(image, 0, 0, canvas.width, canvas.height);
+};
 
 let animate = function () {
 
@@ -299,6 +283,8 @@ let animate = function () {
     if (!game.active) {
         statusGame = false;
         soundGameOver.pause();
+        nameEl.hidden = true;
+        scoreEl.hidden = true;
         textScore.innerHTML = `GAME OVER! <br><br> Your score is: ${score}`;
         buttonStart.hidden = true;
         buttonRestart.hidden = false;
@@ -432,13 +418,6 @@ let animate = function () {
 
 };
 // animate();
-let animateStart = function () {
-    requestAnimationFrame(animateStart);
-    ctx.fillStyle = 'black';
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
-    backgroundGameStart.update();
-
-};
 
 addEventListener('keydown', (evt) => {
     if (game.over) {
@@ -499,6 +478,7 @@ if (statusGame == false) {
     buttonStart.hidden = false;
     buttonRestart.hidden = true;
     animateStart();
+    console.log('restart');
 }
 
 function startGame() {
@@ -514,19 +494,27 @@ function startGame() {
     }
 }
 
+// if (statusGame == false) {
+//     nameEl.hidden = true;
+//     scoreEl.hidden = true;
+//     buttonStart.hidden = false;
+//     buttonRestart.hidden = true;
+//     animateStart();
+// }
 // if (statusGame) {
 //     animateStart();
 // }
 
 function restartGame() {
     statusGame = false;
-    nameEl.hidden = true;
-    scoreEl.hidden = true;
     textScore.hidden = true;
     text.hidden = false;
     buttonStart.hidden = false;
     buttonRestart.hidden = true;
+    
 }
+
+
 
 
 
