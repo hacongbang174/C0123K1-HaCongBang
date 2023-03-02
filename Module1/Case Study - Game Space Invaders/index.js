@@ -84,6 +84,10 @@ let Projectile = function ({ position, velocity }) {
 
 }
 
+/**
+ * Pháo bông lúc đạn mình bắn trúng
+ * @param {} param0 
+ */
 let Particle = function ({ position, velocity, radius, color, fades }) {
     this.position = position;
     this.velocity = velocity;
@@ -113,7 +117,10 @@ let Particle = function ({ position, velocity, radius, color, fades }) {
     }
 
 }
-
+/**
+ * Kẻ địch
+ * @param {} position 
+ */
 let Invader = function (position) {
 
     this.velocity = { x: 0, y: 0 };
@@ -154,7 +161,10 @@ let Invader = function (position) {
         }))
     }
 }
-
+/**
+ * Đạn kẻ địch
+ * @param {} param0 
+ */
 let InvaderProjectile = function ({ position, velocity }) {
     this.position = position;
     this.velocity = velocity;
@@ -172,7 +182,9 @@ let InvaderProjectile = function ({ position, velocity }) {
     }
 
 }
-
+/**
+ * đối tượng lưu danh sách Mảng lưu các kẻ địch
+ */
 let Grid = function () {
     this.position = { x: 0, y: 0 }
     this.velocity = { x: 3, y: 0 };
@@ -198,7 +210,44 @@ let Grid = function () {
 }
 
 
-
+function init() {
+    player = new Player();
+    projectiles = [];
+    grids = [];
+    invaderProjectiles = [];
+    particles = [];
+    game = {
+        over: false,
+        active: true
+    }
+    //  statusGame = false;
+    score = 0;
+    sound = true;
+    soundBackgroud = new Audio('./assets/audio/backgroundMusic.wav');
+    soundShoot = new Audio('./assets/audio/shoot.wav');
+    soundEnemyShoot = new Audio('./assets/audio/enemyShoot.wav');
+    soundGameOver = new Audio('./assets/audio/gameOver.mp3');
+    soundScore = new Audio('./assets/audio/bonus.mp3');
+    soundStart = new Audio('./assets/audio/start.mp3');
+    ButtonState = {
+        BUTTON_LEFT: {
+            pressed: false
+        },
+        BUTTON_RIGHT: {
+            pressed: false
+        },
+        BUTTON_DOWN: {
+            pressed: false
+        },
+        BUTTON_UP: {
+            pressed: false
+        },
+        space: {
+            pressed: false
+        }
+    }
+    frames = 0;
+}
 let player = new Player();
 let projectiles = [];
 let grids = [];
@@ -208,7 +257,7 @@ let game = {
     over: false,
     active: true
 }
-let statusGame = false;
+// let statusGame = false;
 let score = 0;
 let sound = true;
 let soundBackgroud = new Audio('./assets/audio/backgroundMusic.wav');
@@ -272,7 +321,6 @@ let animateStart = function () {
 };
 
 let animate = function () {
-
     soundBackgroud.play();
     if (!sound) {
         soundBackgroud.pause();
@@ -280,20 +328,26 @@ let animate = function () {
         soundEnemyShoot.pause();
         soundScore.pause();
     }
-    if (!game.active) {
-        statusGame = false;
+    if (game.active == false) {
+        textScore.innerHTML = `GAME OVER! <br><br> Your score is: ${score}`;
+        textScore.hidden = false;
+        // statusGame = false;
+        scoreEl.innerHTML = 0;
         soundGameOver.pause();
         nameEl.hidden = true;
         scoreEl.hidden = true;
-        textScore.innerHTML = `GAME OVER! <br><br> Your score is: ${score}`;
         buttonStart.hidden = true;
         buttonRestart.hidden = false;
+        init();
         return;
     }
     requestAnimationFrame(animate);
     ctx.fillStyle = 'black';
     ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+    console.log(player);
     player.update();
+
     particles.forEach((particle, i) => {
 
         if (particle.position.y - particle.radius >= canvas.height) {
@@ -472,26 +526,25 @@ addEventListener('keyup', (evt) => {
 })
 
 
-if (statusGame == false) {
+if (game.active == true) {
     nameEl.hidden = true;
     scoreEl.hidden = true;
     buttonStart.hidden = false;
     buttonRestart.hidden = true;
     animateStart();
-    console.log('restart');
 }
 
 function startGame() {
-    statusGame = true;
-    if (statusGame) {
-        nameEl.hidden = false;
-        scoreEl.hidden = false;
-        text.hidden = true;
-        buttonStart.hidden = true;
-        buttonRestart.hidden = true;
-        soundStart.play();
-        animate();
-    }
+    // game.active = true;
+    // if (game.active == true) {
+    nameEl.hidden = false;
+    scoreEl.hidden = false;
+    text.hidden = true;
+    buttonStart.hidden = true;
+    buttonRestart.hidden = true;
+    soundStart.play();
+    animate();
+
 }
 
 // if (statusGame == false) {
@@ -506,14 +559,17 @@ function startGame() {
 // }
 
 function restartGame() {
-    statusGame = false;
-    textScore.hidden = true;
+    game.active = true;
     text.hidden = false;
-    buttonStart.hidden = false;
-    buttonRestart.hidden = true;
-    
+    textScore.hidden = true;
+    if (game.active == true) {
+        nameEl.hidden = true;
+        scoreEl.hidden = true;
+        buttonStart.hidden = false;
+        buttonRestart.hidden = true;
+        animateStart();
+    }
 }
-
 
 
 
