@@ -247,55 +247,57 @@ function init() {
         }
     }
     frames = 0;
-}
-let player = new Player();
-let projectiles = [];
-let grids = [];
-let invaderProjectiles = [];
-let particles = [];
-let game = {
-    over: false,
-    active: true
-}
-// let statusGame = false;
-let score = 0;
-let sound = true;
-let soundBackgroud = new Audio('./assets/audio/backgroundMusic.wav');
-let soundShoot = new Audio('./assets/audio/shoot.wav');
-let soundEnemyShoot = new Audio('./assets/audio/enemyShoot.wav');
-let soundGameOver = new Audio('./assets/audio/gameOver.mp3');
-let soundScore = new Audio('./assets/audio/bonus.mp3');
-let soundStart = new Audio('./assets/audio/start.mp3');
-let ButtonState = {
-    BUTTON_LEFT: {
-        pressed: false
-    },
-    BUTTON_RIGHT: {
-        pressed: false
-    },
-    BUTTON_DOWN: {
-        pressed: false
-    },
-    BUTTON_UP: {
-        pressed: false
-    },
-    space: {
-        pressed: false
+    for (let i = 0; i < 100; i++) {
+        particles.push(
+            new Particle({
+                position: { x: Math.random() * canvas.width, y: Math.random() * canvas.height },
+                velocity: { x: 0, y: 0.3 },
+                radius: Math.random() * 3,
+                color: 'white'
+            })
+        )
     }
 }
-let frames = 0;
+init();
+// let player = new Player();
+// let projectiles = [];
+// let grids = [];
+// let invaderProjectiles = [];
+// let particles = [];
+// let game = {
+//     over: false,
+//     active: true
+// }
+// // let statusGame = false;
+// let score = 0;
+// let sound = true;
+// let soundBackgroud = new Audio('./assets/audio/backgroundMusic.wav');
+// let soundShoot = new Audio('./assets/audio/shoot.wav');
+// let soundEnemyShoot = new Audio('./assets/audio/enemyShoot.wav');
+// let soundGameOver = new Audio('./assets/audio/gameOver.mp3');
+// let soundScore = new Audio('./assets/audio/bonus.mp3');
+// let soundStart = new Audio('./assets/audio/start.mp3');
+// let ButtonState = {
+//     BUTTON_LEFT: {
+//         pressed: false
+//     },
+//     BUTTON_RIGHT: {
+//         pressed: false
+//     },
+//     BUTTON_DOWN: {
+//         pressed: false
+//     },
+//     BUTTON_UP: {
+//         pressed: false
+//     },
+//     space: {
+//         pressed: false
+//     }
+// }
+// let frames = 0;
 let randomInterval = Math.floor(Math.random() * 500) + 500;
 
-for (let i = 0; i < 100; i++) {
-    particles.push(
-        new Particle({
-            position: { x: Math.random() * canvas.width, y: Math.random() * canvas.height },
-            velocity: { x: 0, y: 0.3 },
-            radius: Math.random() * 3,
-            color: 'white'
-        })
-    )
-}
+
 
 let createParticles = function ({ object, color, fades }) {
     for (let i = 0; i < 15; i++) {
@@ -531,6 +533,12 @@ if (game.active == true) {
     scoreEl.hidden = true;
     buttonStart.hidden = false;
     buttonRestart.hidden = true;
+    soundBackgroud.pause();
+    soundShoot.pause();
+    soundEnemyShoot.pause();
+    soundGameOver.pause()
+    soundScore.pause()
+    soundStart.pause()
     animateStart();
 }
 
